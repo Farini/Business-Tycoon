@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Hot dog cart",
+        
+        "income":{
+            "period":"W1:2000",
+            "revenue":1300.00,
+            "costOfSales":400.00,
+            "advertising":150.00,
+            "badDebtExpense":0.00,
+            "bankCharges":0.00,
+            "insurance":80,
+            "payrollTaxes":80.00,
+            "rent":100.00,
+            "supplies":0.00,
+            "wages":450.00,
+            "repairRevenue":0.0,
+            "interestExpense":0.0,
+            "incomeTaxes":0.0
+        }
+    },
+    {
+        "name": "Coffee shop",
+        
+        "income":{
+            "period":"W1:2000",
+            "revenue":1000.0,
+            "costOfSales":350.0,
+            "advertising":65.0,
+            "badDebtExpense":0.0,
+            "bankCharges":0.0,
+            "insurance":40.0,
+            "payrollTaxes":66.00,
+            "rent":75.00,
+            "supplies":8.00,
+            "wages":350.00,
+            "repairRevenue":0.0,
+            "interestExpense":0.0,
+            "incomeTaxes":0.0
+        }
+    }
+]

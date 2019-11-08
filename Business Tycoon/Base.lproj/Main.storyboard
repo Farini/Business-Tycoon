@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SUf-wJ-UKB">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Cafe-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Business_Tycoon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" allowsCameraControl="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b3l-3k-qQC">
+                                <rect key="frame" x="0.0" y="88" width="414" height="182"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="182" id="bTD-fM-Mw1"/>
+                                </constraints>
+                            </sceneKitView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5t-tv-P1n">
+                                <rect key="frame" x="0.0" y="278" width="414" height="618"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15o-3R-pid" customClass="IncomeStatementView" customModule="Business_Tycoon" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="8" width="414" height="555"/>
+                                        <color key="backgroundColor" red="0.94513308900239446" green="0.95724936548223349" blue="0.84930888921680192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="555" id="l9t-bw-i9J"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="15o-3R-pid" firstAttribute="trailing" secondItem="viv-k7-MJm" secondAttribute="trailing" id="3MM-El-q4s"/>
+                                    <constraint firstItem="15o-3R-pid" firstAttribute="leading" secondItem="viv-k7-MJm" secondAttribute="leading" id="Gud-TQ-Vzl"/>
+                                    <constraint firstItem="15o-3R-pid" firstAttribute="top" secondItem="viv-k7-MJm" secondAttribute="top" constant="8" id="djo-G2-YQF"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="v09-10-dpA"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="viv-k7-MJm"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="b3l-3k-qQC" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8eI-nS-HAQ"/>
+                            <constraint firstItem="b3l-3k-qQC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Dqs-Bx-fb6"/>
+                            <constraint firstItem="w5t-tv-P1n" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="PdA-yZ-eXd"/>
+                            <constraint firstAttribute="bottom" secondItem="w5t-tv-P1n" secondAttribute="bottom" id="Z30-7d-WdO"/>
+                            <constraint firstItem="b3l-3k-qQC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ZtA-dx-pGw"/>
+                            <constraint firstItem="w5t-tv-P1n" firstAttribute="top" secondItem="b3l-3k-qQC" secondAttribute="bottom" constant="8" id="fkW-bt-QOX"/>
+                            <constraint firstItem="w5t-tv-P1n" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="r81-GS-vro"/>
+                            <constraint firstItem="w5t-tv-P1n" firstAttribute="top" secondItem="b3l-3k-qQC" secondAttribute="bottom" constant="8" id="sJ6-bB-tVa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Cafe" id="uSx-3u-w7R"/>
+                    <connections>
+                        <outlet property="incomeStmtView" destination="15o-3R-pid" id="3kV-Tz-SN2"/>
+                        <outlet property="sceneView" destination="b3l-3k-qQC" id="Gx5-Ro-GpD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="138.61607142857142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Q6g-rU-QLt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SUf-wJ-UKB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sHI-C1-mDt">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="NDp-Qa-BoT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eQV-gA-LM7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+        </scene>
+    </scenes>
+</document>
