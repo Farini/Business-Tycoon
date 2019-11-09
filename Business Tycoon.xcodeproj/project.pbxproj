@@ -42,6 +42,7 @@
 		85D823822374BBA6005C3F5C /* BizData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BizData.json; sourceTree = "<group>"; };
 		85D823842374C2F5005C3F5C /* IncomePreviewer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomePreviewer.xib; sourceTree = "<group>"; };
 		85D823862374C591005C3F5C /* IncomePreviewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomePreviewer.swift; sourceTree = "<group>"; };
+		85D823882375030D005C3F5C /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +59,7 @@
 		857C3E7823721F3900DB6893 = {
 			isa = PBXGroup;
 			children = (
+				85D823882375030D005C3F5C /* Readme.md */,
 				85D82378237340BA005C3F5C /* Shared */,
 				857C3E8323721F3900DB6893 /* Business Tycoon */,
 				857C3E8223721F3900DB6893 /* Products */,
