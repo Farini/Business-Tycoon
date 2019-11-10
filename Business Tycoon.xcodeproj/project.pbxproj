@@ -46,6 +46,8 @@
 		85D823882375030D005C3F5C /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		85D8238A237860F0005C3F5C /* Layout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Layout.storyboard; sourceTree = "<group>"; };
 		85D8238C237870C2005C3F5C /* ModelReadme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ModelReadme.md; sourceTree = "<group>"; };
+		85D8238D237875AF005C3F5C /* ArtReadme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ArtReadme.md; sourceTree = "<group>"; };
+		85D8238E237879A4005C3F5C /* Design.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Design.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		85D8236F237322BD005C3F5C /* Art */ = {
 			isa = PBXGroup;
 			children = (
+				85D8238D237875AF005C3F5C /* ArtReadme.md */,
 				85D82370237322C5005C3F5C /* 3D */,
 			);
 			path = Art;
@@ -151,8 +154,8 @@
 		85D8237F237343A0005C3F5C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				85D82380237343CD005C3F5C /* BizModel.swift */,
 				85D8238C237870C2005C3F5C /* ModelReadme.md */,
+				85D82380237343CD005C3F5C /* BizModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 		85D82389237860B6005C3F5C /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				85D8238E237879A4005C3F5C /* Design.md */,
 				85D8238A237860F0005C3F5C /* Layout.storyboard */,
 			);
 			path = Storyboards;

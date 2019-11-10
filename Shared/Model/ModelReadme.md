@@ -16,12 +16,9 @@ This is a document made to draw a general overview of what the data model will l
 - Address
 - Name
 - Owner
+- Financial Statements
 
 ## Neighborhood (City)
 
 - Addresses?
 - Landmarks?
-- 
-
-
-
