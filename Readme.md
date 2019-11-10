@@ -11,6 +11,9 @@
 - [X] Create Income Statement Data
 - [X] Show income preview (Income Statement)
 
+- [ ] Refine Data model #1
+
+
 - [ ] Improve data
 - [ ] View Controller to Buy Business
 - [ ] View Controller to Manage Business

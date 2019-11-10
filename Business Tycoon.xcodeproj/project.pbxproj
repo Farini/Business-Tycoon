@@ -22,6 +22,7 @@
 		85D823832374BBA6005C3F5C /* BizData.json in Resources */ = {isa = PBXBuildFile; fileRef = 85D823822374BBA6005C3F5C /* BizData.json */; };
 		85D823852374C2F5005C3F5C /* IncomePreviewer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85D823842374C2F5005C3F5C /* IncomePreviewer.xib */; };
 		85D823872374C591005C3F5C /* IncomePreviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D823862374C591005C3F5C /* IncomePreviewer.swift */; };
+		85D8238B237860F0005C3F5C /* Layout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85D8238A237860F0005C3F5C /* Layout.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,8 @@
 		85D823842374C2F5005C3F5C /* IncomePreviewer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomePreviewer.xib; sourceTree = "<group>"; };
 		85D823862374C591005C3F5C /* IncomePreviewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomePreviewer.swift; sourceTree = "<group>"; };
 		85D823882375030D005C3F5C /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		85D8238A237860F0005C3F5C /* Layout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Layout.storyboard; sourceTree = "<group>"; };
+		85D8238C237870C2005C3F5C /* ModelReadme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ModelReadme.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,7 @@
 		857C3E8323721F3900DB6893 /* Business Tycoon */ = {
 			isa = PBXGroup;
 			children = (
+				85D82389237860B6005C3F5C /* Storyboards */,
 				85D8237323732B18005C3F5C /* Views */,
 				857C3E8423721F3900DB6893 /* AppDelegate.swift */,
 				857C3E8623721F3900DB6893 /* SceneDelegate.swift */,
@@ -148,8 +152,17 @@
 			isa = PBXGroup;
 			children = (
 				85D82380237343CD005C3F5C /* BizModel.swift */,
+				85D8238C237870C2005C3F5C /* ModelReadme.md */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		85D82389237860B6005C3F5C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				85D8238A237860F0005C3F5C /* Layout.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85D823852374C2F5005C3F5C /* IncomePreviewer.xib in Resources */,
+				85D8238B237860F0005C3F5C /* Layout.storyboard in Resources */,
 				857C3E9123721F4100DB6893 /* LaunchScreen.storyboard in Resources */,
 				857C3E8E23721F4100DB6893 /* Assets.xcassets in Resources */,
 				85D8237723732F83005C3F5C /* cafe.scn in Resources */,
