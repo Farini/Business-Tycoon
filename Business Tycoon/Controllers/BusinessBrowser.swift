@@ -27,6 +27,7 @@ class BusinessBrowser: UIViewController {
         let ceo = CEO(name: "Fari", cash: 5000, credit: 5000, tokens: 0, influence: 0, businesses: [])
         print("CEO: \(ceo)")
         self.ceo = ceo
+        print("CEO has \(ceo.cash)")
         
         // Interface
         // Scene
@@ -55,8 +56,6 @@ class BusinessBrowser: UIViewController {
         selectedBiz = businesses.first
         forSale = businesses
         
-        print("CEO has \(ceo.cash)")
-        // print("Shop income: \(selectedBiz?.finantials.incomeStatement.netIncome() ?? 0)")
     }
     
     func layoutCurrentShop(){
@@ -75,6 +74,9 @@ class BusinessBrowser: UIViewController {
         guard let business = selectedBiz else { return }
         
         print("Biz \(business.name): \(business.finantials.incomeStatement.netIncome())")
+        
+        // Describe balance sheet
+        business.finantials.balanceSheet.describe()
     }
 }
 

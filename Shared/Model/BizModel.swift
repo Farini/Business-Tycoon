@@ -17,17 +17,6 @@ struct CEO {
     var businesses:[Business]
 }
 
-/*
-struct BizShop:Codable{
-    
-    var name:String
-    
-    var income:IncomeStatement
-    // var cashFlow:Cashflow
-    // var balance:BalanceSheet
-}
-*/
-
 struct Business:Codable{
     
     var name:String
@@ -73,43 +62,6 @@ struct Finantials:Codable{
 //        case cashflow
 //    }
     
-    /*
-     
-     "cashflow":{
-         "period":"W0",
-         "netIncome":0.0,
-         "accountsReceivable":0.0,
-         "inventory":0.0,
-         "prepaidExpenses":0.00,
-         "accountsPayable":0.0,
-         "purchases":0.0,
-         "mortgage":0.0,
-         "autoLoan":0.0,
-         "ownersInvestment":15000.0,
-         "netIncrease":0.0
-     }
-     
-     */
-    
-    // ==== SEPARATOR
-    
-    
-    /*
-     ,
-     "cashflow":{
-         "period":"W0",
-         "netIncome":0.0,
-         "accountsReceivable":0.0,
-         "inventory":0.0,
-         "prepaidExpenses":0.00,
-         "accountsPayable":0.0,
-         "purchases":0.0,
-         "mortgage":0.0,
-         "autoLoan":0.0,
-         "ownersInvestment":15000.0,
-         "netIncrease":0.0
-     }
-     */
 }
 
 struct IncomeStatement:Codable{
@@ -150,12 +102,11 @@ struct IncomeStatement:Codable{
     
     func netIncome() -> Double{
         
-        print("Net Income \n")
+        print("\n Net Income...")
         let grossPofit = revenue - costOfSales
-        print("Revenue: \(revenue)")
+        print("+ Revenue: \(revenue)")
         print("- cost of sales \(costOfSales)")
         print("= Gross Profit: \(grossPofit)")
-        
         
         // Op
         let operations = advertising + insurance + payrollTaxes + rent + supplies + wages
@@ -192,45 +143,28 @@ struct Cashflow:Codable{
     },
      */
     
-    var period:String //= "period":"W1:2000",
-    var netIncome:Double //"netIncome":15283.00,
-    var accountsReceivable:Double // "accountsReceivable":-21200.00,
-    var inventory:Double // "inventory":-5625.00,
-    var prepaidExpenses:Double // "prepaidExpenses":0.00,
-    var accountsPayable:Double // "accountsPayable":8925.00,
-    var purchases:Double // "purchases":-32800.00,
-    var mortgage:Double // "mortgage":18000.00,
-    var autoLoan:Double //  "autoLoan":8800.00,
-    var ownerInvestment:Double // "ownersInvestment":50000.00,
-    var netIncrease:Double // "netIncrease":41383.00
+    var period:String
+    var netIncome:Double
+    var accountsReceivable:Double
+    var inventory:Double
+    var prepaidExpenses:Double
+    var accountsPayable:Double
+    var purchases:Double
+    var mortgage:Double
+    var autoLoan:Double
+    var ownerInvestment:Double
+    var netIncrease:Double
+}
+
+struct PPE:Codable{
+    var name:String
+    var value:Double
+    var depreciation:Double
 }
 
 struct BalanceSheet:Codable{
     
-    /*
-    "balanceSheet":{
-        "period":"W1:2000",
-        "cash":41383.00,
-        "accountsReceivable":21900,
-        "allowanceForBadDebts":-700.0,
-        "inventory":5625.0,
-        "prepaidExpenses":0.0,
-        "automobile":12800,
-        "land":20000.0,
-        "totalAssets":101008.00
-        "accountsPayable":8925.0,
-        "currentLongTermDebt":900.0,
-        "currentNotePayable":400.0,
-        "mortgagePayable":18000.0,
-        "mortgageShortTerm":-900.0
-        "autoPayable":8800.0,
-        "autoShort":-400.0,
-        "ownersInvestment":50000.00,
-        "retainedEarnings":15283.00,
-        "totalOwnedEquity":65283.00,
-        "totalLiabilities":101008.00
-    }
-    */
+    // Assets
     
     var period:String
     var cash:Double
@@ -241,17 +175,100 @@ struct BalanceSheet:Codable{
     var automobile:Double
     var land:Double
     var totalAssets:Double
+    
+    // ====
+    // FIXME: - PPE Property, plant and equipment
+    // ----
+    
+    // Liabilities
+    
     var accountsPayable:Double
     var currentLongTermDebt:Double
     var currentNotePayable:Double
-    var mortgagePayable:Double
-    var mortgageShortTerm:Double
-    var autoPayable:Double
-    var autoShort:Double
+    
+    // Part of debt.....
+    // Debt (short term)
+    // Debt (long term)
+    var mortgagePayable:Double      // deprecate
+    var mortgageShortTerm:Double    // deprecate
+    var autoPayable:Double          // deprecate
+    var autoShort:Double            // deprecate
+    
+    // Investment
     var ownersInvestment:Double
     var retainedEarnings:Double
     var totalOwnedEquity:Double
     var totalLiabilities:Double
+    
+    func describe(){
+        
+        print("\n Balance Sheet...")
+        print("Assets")
+        print("cash \(cash)")
+        print("receivables \(accountsReceivable)")
+        print("allow bad debts \(allowanceForBadDebts)")
+        print("inventory \(inventory)")
+        print("prepaid \(prepaidExpenses)")
+        print("--- PPE {")
+        print("auto: \(automobile), land:\(land)")
+        print("}")
+        
+        let ttlAssets = cash + accountsReceivable + allowanceForBadDebts + inventory + prepaidExpenses + automobile + land
+        
+        print("= TOTAL ASSETS: \(ttlAssets)")
+        
+        print("Liabilities")
+        print("payable: \(accountsPayable)")
+        print("current lt debt \(currentLongTermDebt)")
+        print("current note payable \(currentNotePayable)")
+        print("mortgage: \(mortgagePayable)")
+        print("short mortgage \(mortgageShortTerm)")
+        print("auto payable \(autoPayable)")
+        print("auto short \(autoShort)")
+        
+        print("Owner investment: \(ownersInvestment)")
+        print("Retained earnings: \(retainedEarnings)")
+        print("total owned equities: \(totalOwnedEquity)")
+        
+        let ttlLiab = accountsPayable + currentLongTermDebt + currentNotePayable + mortgagePayable + mortgageShortTerm + autoPayable + autoShort
+        
+        let earn = ownersInvestment + retainedEarnings + totalOwnedEquity
+        
+        print("Subtotal Liabilities: \(ttlLiab)")
+        print("Ownership: \(earn)")
+        
+        print("= TOTAL LIABILITIES \(ttlLiab + earn)")
+        
+    }
+    
+    func basePPECost(){
+        
+    }
+}
+
+struct FinantialDebt{
+    
+    var principal:Double    // The amount one owes
+    var interest:Double     // Interest charged
+    var payments:Int        // number of payments (periods)
+    
+    func begin(){
+        
+        var accrued:Double = 0.0
+        
+        for n in 0...payments{
+            
+            let current = principal - accrued
+            let pct = current * (1 + (interest / 100))
+            let carrier = current + pct
+            
+            accrued += current
+        }
+    }
+    
+    var cycle:Int // = 0. Current payment
+    var paid:Double
+    
 }
 
 /*
