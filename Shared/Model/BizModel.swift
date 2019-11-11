@@ -7,14 +7,17 @@ import Foundation
 // MARK: Base Structure
 
 struct CEO {
+    
     var name:String
     var cash:Double
-    var bankCredit:Double
+    var credit:Double
     var tokens:Int
     var influence:Int
-    var businesses:[BizShop]
+    
+    var businesses:[Business]
 }
 
+/*
 struct BizShop:Codable{
     
     var name:String
@@ -23,21 +26,16 @@ struct BizShop:Codable{
     // var cashFlow:Cashflow
     // var balance:BalanceSheet
 }
+*/
 
-struct Business{
+struct Business:Codable{
     
-    var neighborhood:String
-    var address:String
     var name:String
+    var model:String
     
-//    var model3D:String
-    
-    var owner:CEO
-    
-//    var finantials:
-    
+    var finantials:Finantials
 }
-
+/*
 struct Address{
     
     var streetNumber:Int
@@ -45,13 +43,73 @@ struct Address{
     var streetExtended:String
     var neighborhood:String
 }
+*/
 
 // MARK: - Finantials
 
-class Finantials{
-//    var incomeStatement:IncomeStatement
-//    var balanceSheet:BalanceSheet
-//    var cashflow:Cashflow?
+struct Finantials:Codable{
+    
+    // Current
+    var incomeStatement:IncomeStatement
+    var balanceSheet:BalanceSheet
+    var cashflow:Cashflow
+    
+    // History
+    // var histoIncome:[IncomeStatement] = []
+    // var histoBalance:[BalanceSheet] = []
+    // var histoCashflow:[Cashflow] = []
+    
+//    func searchPeriod(p:AccountingPeriod){
+//
+//    }
+    
+//    init?(dictionary:[String:Any]){
+//
+//    }
+    
+//    private enum CodingKeys:String, CodingKey{
+//        case incomeStatement
+//        case balanceSheet
+//        case cashflow
+//    }
+    
+    /*
+     
+     "cashflow":{
+         "period":"W0",
+         "netIncome":0.0,
+         "accountsReceivable":0.0,
+         "inventory":0.0,
+         "prepaidExpenses":0.00,
+         "accountsPayable":0.0,
+         "purchases":0.0,
+         "mortgage":0.0,
+         "autoLoan":0.0,
+         "ownersInvestment":15000.0,
+         "netIncrease":0.0
+     }
+     
+     */
+    
+    // ==== SEPARATOR
+    
+    
+    /*
+     ,
+     "cashflow":{
+         "period":"W0",
+         "netIncome":0.0,
+         "accountsReceivable":0.0,
+         "inventory":0.0,
+         "prepaidExpenses":0.00,
+         "accountsPayable":0.0,
+         "purchases":0.0,
+         "mortgage":0.0,
+         "autoLoan":0.0,
+         "ownersInvestment":15000.0,
+         "netIncrease":0.0
+     }
+     */
 }
 
 struct IncomeStatement:Codable{
@@ -147,7 +205,7 @@ struct Cashflow:Codable{
     var netIncrease:Double // "netIncrease":41383.00
 }
 
-struct BalanceSheet{
+struct BalanceSheet:Codable{
     
     /*
     "balanceSheet":{
@@ -196,8 +254,12 @@ struct BalanceSheet{
     var totalLiabilities:Double
 }
 
-struct AccountingPeriod{
-    var day:Int
-    var week:Int
+/*
+struct AccountingPeriod:Equatable{
+    
+    var day:Int = 0
+    var week:Int = 0
     var year:Int
+    
 }
+ */

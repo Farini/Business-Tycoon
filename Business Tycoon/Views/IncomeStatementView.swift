@@ -14,63 +14,63 @@ class IncomeStatementView: UIView {
     
     @IBOutlet weak var stackView: UIStackView!
     
-    var bizShop:BizShop?
+    // var bizShop:BizShop?
     
-    func previewWith(bizShop:BizShop){
-        
-        // Cleanup
-        for subV in stackView.arrangedSubviews{
-            subV.removeFromSuperview()
-        }
-        
-        self.bizShop = bizShop
-        
-        // Head
-        let head = makeBoldLabel()
-        head.backgroundColor = UIColor.lightGray
-        head.text = "\(bizShop.name)"
-        stackView.addArrangedSubview(head)
-        
-        // Revenue
-        makeStrongLine(left: "Revenue", right: "$ \(bizShop.income.revenue)")
-        
-        // Cost of sales
-        makeNormalLine(left: "Cost of sales", right: " - $\(bizShop.income.costOfSales)")
-        
-        // Gross Profit
-        let gp = bizShop.income.revenue - bizShop.income.costOfSales
-        makeStrongLine(left: "Gross Profit", right: " $ \(gp)")
-        
-        // Spacer
-        makeSpacer(height: 15.0)
-        
-        // Operations
-        
-        // adv
-        makeNormalLine(left: "Advertising", right: " - \(bizShop.income.advertising)")
-        
-        // bank
-        makeNormalLine(left: "Bank Charge", right: " - \(bizShop.income.bankCharges)")
-        
-        // insurance
-        makeNormalLine(left: "Insurance", right: " - \(bizShop.income.insurance)")
-        
-        // wages
-        makeNormalLine(left: "Wages", right: " - \(bizShop.income.wages)")
-        
-        // payroll
-        makeNormalLine(left: "Payroll tx", right: " - \(bizShop.income.payrollTaxes)")
-        
-        // repair
-        makeNormalLine(left: "Repairs", right: " - \(bizShop.income.repairRevenue)")
-        
-        // Other spacer
-        makeSpacer(height: 15.0)
-        
-        // Operating profit
-        makeStrongLine(left: "Operating Profit", right: "$ \(bizShop.income.netIncome())")
-        
-    }
+//    func previewWith(bizShop:BizShop){
+//        
+//        // Cleanup
+//        for subV in stackView.arrangedSubviews{
+//            subV.removeFromSuperview()
+//        }
+//        
+//        self.bizShop = bizShop
+//        
+//        // Head
+//        let head = makeBoldLabel()
+//        head.backgroundColor = UIColor.lightGray
+//        head.text = "\(bizShop.name)"
+//        stackView.addArrangedSubview(head)
+//        
+//        // Revenue
+//        makeStrongLine(left: "Revenue", right: "$ \(bizShop.income.revenue)")
+//        
+//        // Cost of sales
+//        makeNormalLine(left: "Cost of sales", right: " - $\(bizShop.income.costOfSales)")
+//        
+//        // Gross Profit
+//        let gp = bizShop.income.revenue - bizShop.income.costOfSales
+//        makeStrongLine(left: "Gross Profit", right: " $ \(gp)")
+//        
+//        // Spacer
+//        makeSpacer(height: 15.0)
+//        
+//        // Operations
+//        
+//        // adv
+//        makeNormalLine(left: "Advertising", right: " - \(bizShop.income.advertising)")
+//        
+//        // bank
+//        makeNormalLine(left: "Bank Charge", right: " - \(bizShop.income.bankCharges)")
+//        
+//        // insurance
+//        makeNormalLine(left: "Insurance", right: " - \(bizShop.income.insurance)")
+//        
+//        // wages
+//        makeNormalLine(left: "Wages", right: " - \(bizShop.income.wages)")
+//        
+//        // payroll
+//        makeNormalLine(left: "Payroll tx", right: " - \(bizShop.income.payrollTaxes)")
+//        
+//        // repair
+//        makeNormalLine(left: "Repairs", right: " - \(bizShop.income.repairRevenue)")
+//        
+//        // Other spacer
+//        makeSpacer(height: 15.0)
+//        
+//        // Operating profit
+//        makeStrongLine(left: "Operating Profit", right: "$ \(bizShop.income.netIncome())")
+//        
+//    }
     
     // Spacer
     func makeSpacer(height:CGFloat){

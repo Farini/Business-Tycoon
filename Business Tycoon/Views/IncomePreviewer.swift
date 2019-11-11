@@ -10,18 +10,18 @@ import UIKit
 
 class IncomePreviewer: UIView {
     
-    var bizShop:BizShop?
+    // var bizShop:BizShop?
     
-    func previewWith(bizShop:BizShop){
-        self.bizShop = bizShop
-        
-        let lbl = UILabel()
-        lbl.text = "try"
-        let orig = CGPoint.zero
-        
-        addSubview(lbl)
-        //self.setNeedsDisplay()
-    }
+//    func previewWith(bizShop:BizShop){
+//        self.bizShop = bizShop
+//
+//        let lbl = UILabel()
+//        lbl.text = "try"
+//        let orig = CGPoint.zero
+//
+//        addSubview(lbl)
+//        //self.setNeedsDisplay()
+//    }
 
     
     // Only override draw() if you perform custom drawing.

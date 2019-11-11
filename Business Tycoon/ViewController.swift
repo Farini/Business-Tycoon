@@ -31,19 +31,19 @@ class ViewController: UIViewController {
         
         
         // Model
-        print("Shop model")
-        
-        let shops = Bundle.main.decode([BizShop].self, from: "Businesses.json")
-        for shop in shops{
-            print("\n ---")
-            print("\(shop.name) INCOME STATEMENT")
-            let netInc = shop.income.netIncome()
-            print("\(shop.name) Net Income: \(netInc)")
-        }
-        
-        let shop = shops.first!
-        
-        incomeStmtView.previewWith(bizShop: shop)
+//        print("Shop model")
+//
+//        let shops = Bundle.main.decode([BizShop].self, from: "Businesses.json")
+//        for shop in shops{
+//            print("\n ---")
+//            print("\(shop.name) INCOME STATEMENT")
+//            let netInc = shop.income.netIncome()
+//            print("\(shop.name) Net Income: \(netInc)")
+//        }
+//
+//        let shop = shops.first!
+//
+//        incomeStmtView.previewWith(bizShop: shop)
     }
     
     @objc func rateApp(){
