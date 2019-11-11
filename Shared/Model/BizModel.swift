@@ -1,12 +1,19 @@
-//
 //  BizModel.swift
-//  Business Tycoon
-//
-//  Created by Farini on 11/6/19.
+//  Business Tycoon: Created by Farini on 11/6/19.
 //  Copyright © 2019 Farini. All rights reserved.
-//
 
 import Foundation
+
+// MARK: Base Structure
+
+struct CEO {
+    var name:String
+    var cash:Double
+    var bankCredit:Double
+    var tokens:Int
+    var influence:Int
+    var businesses:[BizShop]
+}
 
 struct BizShop:Codable{
     
@@ -15,6 +22,36 @@ struct BizShop:Codable{
     var income:IncomeStatement
     // var cashFlow:Cashflow
     // var balance:BalanceSheet
+}
+
+struct Business{
+    
+    var neighborhood:String
+    var address:String
+    var name:String
+    
+//    var model3D:String
+    
+    var owner:CEO
+    
+//    var finantials:
+    
+}
+
+struct Address{
+    
+    var streetNumber:Int
+    var streetName:String
+    var streetExtended:String
+    var neighborhood:String
+}
+
+// MARK: - Finantials
+
+class Finantials{
+//    var incomeStatement:IncomeStatement
+//    var balanceSheet:BalanceSheet
+//    var cashflow:Cashflow?
 }
 
 struct IncomeStatement:Codable{
@@ -78,7 +115,6 @@ struct IncomeStatement:Codable{
         return netIncome
     }
     
-    
 }
 
 struct Cashflow:Codable{
@@ -110,8 +146,6 @@ struct Cashflow:Codable{
     var ownerInvestment:Double // "ownersInvestment":50000.00,
     var netIncrease:Double // "netIncrease":41383.00
 }
-
-
 
 struct BalanceSheet{
     
@@ -160,4 +194,10 @@ struct BalanceSheet{
     var retainedEarnings:Double
     var totalOwnedEquity:Double
     var totalLiabilities:Double
+}
+
+struct AccountingPeriod{
+    var day:Int
+    var week:Int
+    var year:Int
 }

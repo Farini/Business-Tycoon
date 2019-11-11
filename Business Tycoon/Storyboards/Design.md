@@ -8,3 +8,9 @@
 2. Navigation Collection: https://github.com/Ramotion/navigation-toolbar
 3. Elongation Preview: https://github.com/Ramotion/elongation-preview
 
+## Basic Layout Items
+
+- Purchase Businesses
+- Check Businesses
+- City View (if so)
+
