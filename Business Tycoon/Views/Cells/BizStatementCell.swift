@@ -12,6 +12,9 @@ class BizStatementCell: UITableViewCell {
     
     let leftLabel = UILabel()
     let rightLabel = UILabel()
+    
+    let normalSize:CGFloat = 17.0
+    let boldSize:CGFloat = 18.0
 
 //    override func awakeFromNib() {
 //        super.awakeFromNib()
@@ -50,10 +53,28 @@ class BizStatementCell: UITableViewCell {
         
     }
     
-    func prepText(left:String, right:String){
-        leftLabel.text = left
-        rightLabel.text = right
+    func prepareLine(line:FinantialLine){
+        
+        // Left Label
+        leftLabel.text = line.leftHandle
+        
+        // Right Label
+        if let value = line.rightHandle{
+            rightLabel.text = "\(value)"
+        }else{
+            rightLabel.text = ""
+        }
+        
+        // Bold
+        if line.bold == true{
+            leftLabel.font = UIFont.boldSystemFont(ofSize: boldSize)
+            rightLabel.font = UIFont.boldSystemFont(ofSize: boldSize)
+        }else{
+            leftLabel.font = UIFont.systemFont(ofSize: normalSize)
+            rightLabel.font = UIFont.systemFont(ofSize: normalSize)
+        }
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

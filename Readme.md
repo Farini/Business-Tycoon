@@ -11,16 +11,23 @@
 - [X] Create Income Statement Data
 - [X] Show income preview (Income Statement)
 
-- [ ] Refine Data model #1
+- [X] Refine Data model #1 - Income Statement and Balance Sheet basics
+- [X] Preview of business
 
-- [ ] Improve data
+- [ ] Refine Data model #2 - Debt and PPE objects
+- [ ] Data Model of Companies + Maps + DAE files + CEO, etc.
+- [ ] Neighborhoods
+
 - [ ] View Controller to Buy Business
 - [ ] View Controller to Manage Business
 - [ ] Determine how/what to buy things in game (for the biz), and generate revenue
 
-- [ ] Data Model of Companies + Maps + DAE files + CEO, etc.
+- [ ] Base SCNScene - Load Camera, lights, etc automatically
+- [ ] Sunlight - Light coming from sun (with an angle)
+- [ ] Natural light - light present everywhere
+- [ ] Emission light - light emitted in buildings
+- [ ] Camera looking at center
 - [ ] Scene animations
-- [ ] Neighborhoods
 
 ## ⚠️ Construction
 

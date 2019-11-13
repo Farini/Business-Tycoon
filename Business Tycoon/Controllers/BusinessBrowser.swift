@@ -22,6 +22,12 @@ class BusinessBrowser: UIViewController {
     var selectedBiz:Business?
     
     var rowStrings:[String] = []
+    var rowValues:[Double] = []
+    
+    var finantialLines:[FinantialLine] = []
+    var incomeStmtLines:[FinantialLine] = []
+    
+    var pairs:[String:Double] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,15 +60,7 @@ class BusinessBrowser: UIViewController {
         if let b = selectedBiz { display(biz: b) }
         
         // Table
-        rowStrings.append("Carlos")
-        rowStrings.append("test")
-        rowStrings.append("test \n another \n line")
-        rowStrings.append("test")
-        rowStrings.append("test")
-        
         tableView.register(BizStatementCell.self, forCellReuseIdentifier: "id1")
-        tableView.reloadData()
-        
     }
     
     func display(biz:Business){
@@ -77,32 +75,61 @@ class BusinessBrowser: UIViewController {
         print("Showing model")
         sceneView.scene = scene
         
+        // Table
+        self.finantialLines = biz.finantials.balanceSheet.lines()
+        self.incomeStmtLines = biz.finantials.incomeStatement.lines()
+        
+        tableView.reloadData()
     }
     
     @objc func buyShop(){
         
-        print("Wants to buy shop")
-        guard let business = selectedBiz else { return }
         
-        print("Biz \(business.name): \(business.finantials.incomeStatement.netIncome())")
+        guard let business = selectedBiz else { return }
+        print("Wants to buy Biz \(business.name): \(business.finantials.incomeStatement.netIncome())")
         
         // Describe balance sheet
+        print("\n ----- \n * \(business.name.uppercased()) BALANCE SHEET")
         business.finantials.balanceSheet.describe()
     }
 }
 
 extension BusinessBrowser: UITableViewDataSource{
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0: return "Income Statement"
+        case 1: return "Balance Sheet"
+        default: return nil
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rowStrings.count
+        switch section {
+        case 0: return incomeStmtLines.count
+        case 1: return finantialLines.count
+        default: return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "id1", for: indexPath) as! BizStatementCell
-        // cell.textLabel?.text = rowStrings[indexPath.row]
-        // cell.textLabel?.numberOfLines = 0
-        cell.prepText(left: "Definition", right: rowStrings[indexPath.row])
+        
+        if indexPath.section == 0{
+            let stmtLine = incomeStmtLines[indexPath.row]
+            cell.prepareLine(line: stmtLine)
+            // cell.prepText(left: stmtLine.leftHandle, right: stmtLine.rightHandle)
+        }else if indexPath.section == 1{
+            let finLine = finantialLines[indexPath.row]
+            cell.prepareLine(line: finLine)
+            // cell.prepText(left: finLine.leftHandle, right: finLine.rightHandle)
+        }
+    
         return cell
     }
 }

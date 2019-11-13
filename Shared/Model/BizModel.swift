@@ -25,16 +25,6 @@ struct Business:Codable{
     var finantials:Finantials
 }
 
-/*
-struct Address{
-    
-    var streetNumber:Int
-    var streetName:String
-    var streetExtended:String
-    var neighborhood:String
-}
-*/
-
 // MARK: - Finantials
 
 struct Finantials:Codable{
@@ -85,22 +75,49 @@ struct IncomeStatement:Codable{
     // get base income
     // baseIncomeForBusiness()
     
-    func generateNetSales(){
-        // net sales = base sales
-        
-        // compare sales to last
-        // price levels
-        // advertising
-        // management (wages, etc.)
-        // random
+    // This works
+    var grProf:Double {
+        return revenue - costOfSales
     }
     
-    func generateCostOfSales(){
+    /// Gets the statement lines
+    func lines() -> [FinantialLine]{
+        var build:[FinantialLine] = []
+    
+        // Income
+        build.append(FinantialLine(leftHandle: "Revenue", rightHandle: revenue, bold:true))
+        build.append(FinantialLine(leftHandle: "COGS", rightHandle: costOfSales))
+        let grossProfit = revenue - costOfSales
+        build.append(FinantialLine(leftHandle: "GROSS PROFIT", rightHandle: grossProfit, bold:true))
         
-        // base (% of sales)
-        // management
+        // Separator
+        build.append(FinantialLine(leftHandle: "---", rightHandle: nil))
+        
+        // Operating
+        build.append(FinantialLine(leftHandle: "Advertising", rightHandle: advertising))
+        build.append(FinantialLine(leftHandle: "Bank charges", rightHandle: bankCharges))
+        build.append(FinantialLine(leftHandle: "Insurance", rightHandle: insurance))
+        build.append(FinantialLine(leftHandle: "Wages", rightHandle: wages))
+        build.append(FinantialLine(leftHandle: "Payroll taxes", rightHandle: payrollTaxes))
+        build.append(FinantialLine(leftHandle: "Rent", rightHandle: rent))
+        build.append(FinantialLine(leftHandle: "Supplies", rightHandle: supplies))
+        build.append(FinantialLine(leftHandle: "Repair revenue", rightHandle: repairRevenue))
+        build.append(FinantialLine(leftHandle: "Interest expense", rightHandle: interestExpense))
+        let operatingProfit = grossProfit - advertising - bankCharges - insurance - wages - payrollTaxes - rent - supplies - repairRevenue - interestExpense
+        build.append(FinantialLine(leftHandle: "OPERATING PROFIT", rightHandle: operatingProfit, bold:true))
+        
+        // Separator
+        build.append(FinantialLine(leftHandle: "---", rightHandle: nil))
+        
+        // Taxes & Net
+        build.append(FinantialLine(leftHandle: "Income Taxes", rightHandle: incomeTaxes))
+        let netIncome = operatingProfit - incomeTaxes
+        build.append(FinantialLine(leftHandle: "NET INCOME", rightHandle: netIncome, bold:true))
+        
+        return build
     }
     
+    // DEPRECATE THIS
     func netIncome() -> Double{
         
         print("\n Net Income...")
@@ -157,99 +174,142 @@ struct Cashflow:Codable{
     var netIncrease:Double
 }
 
-
-
 struct BalanceSheet:Codable{
     
-    // Assets
-    
     var period:String
+    
+    // Assets
     var cash:Double
     var accountsReceivable:Double
-    var allowanceForBadDebts:Double
     var inventory:Double
     var prepaidExpenses:Double
-    var automobile:Double
-    var land:Double
-    var totalAssets:Double
-    
-    // ====
-    // FIXME: - PPE Property, plant and equipment
-    // ----
+    var ppeValue:Double
+    var accumulatedDepreciation:Double
     
     // Liabilities
-    
     var accountsPayable:Double
-    var currentLongTermDebt:Double
-    var currentNotePayable:Double
-    
-    // Part of debt.....
-    // Debt (short term)
-    // Debt (long term)
-    var mortgagePayable:Double      // deprecate
-    var mortgageShortTerm:Double    // deprecate
-    var autoPayable:Double          // deprecate
-    var autoShort:Double            // deprecate
+    var shortTermPayables:Double
+    var shortTermDebt:Double
+    var longTermDebt:Double
     
     // Investment
-    var ownersInvestment:Double
+    var capitalStock:Double
+    var shares:Int
     var retainedEarnings:Double
-    var totalOwnedEquity:Double
-    var totalLiabilities:Double
     
+    /// Gets the statement lines
+    func lines() -> [FinantialLine]{
+        var build:[FinantialLine] = []
+        
+        // Assets
+        build.append(FinantialLine(leftHandle: "ASSETS", rightHandle: nil))
+        build.append(FinantialLine(leftHandle: "Cash", rightHandle: cash))
+        build.append(FinantialLine(leftHandle: "Receivables", rightHandle: accountsReceivable))
+        build.append(FinantialLine(leftHandle: "Inventory", rightHandle: inventory))
+        build.append(FinantialLine(leftHandle: "Prepaid expenses", rightHandle: prepaidExpenses))
+        let currentAssets = cash + accountsReceivable + inventory + prepaidExpenses
+        build.append(FinantialLine(leftHandle: "Current Assets", rightHandle: currentAssets))
+        
+        build.append(FinantialLine(leftHandle: "Property", rightHandle: ppeValue))
+        build.append(FinantialLine(leftHandle: "(-) Depreciation", rightHandle: accumulatedDepreciation))
+        let totalAssets = currentAssets + ppeValue - accumulatedDepreciation
+        build.append(FinantialLine(leftHandle: "TOTAL ASSETS", rightHandle: totalAssets, bold:true))
+        
+        // Separator
+        build.append(FinantialLine(leftHandle: "---", rightHandle: nil))
+        
+        // Liabilities
+        build.append(FinantialLine(leftHandle: "LIABILITIES", rightHandle: nil))
+        build.append(FinantialLine(leftHandle: "Payable", rightHandle: accountsPayable))
+        build.append(FinantialLine(leftHandle: "Short term payment", rightHandle: shortTermPayables))
+        build.append(FinantialLine(leftHandle: "Short term debt", rightHandle: shortTermDebt))
+        let currentLiabilities = accountsPayable + shortTermPayables + shortTermDebt
+        build.append(FinantialLine(leftHandle: "Current Liabilities", rightHandle: currentLiabilities))
+        
+        let longTermLiabilities = longTermDebt
+        build.append(FinantialLine(leftHandle: "Long term debt", rightHandle: longTermLiabilities))
+        let totalLiabilities = currentLiabilities + longTermLiabilities
+        build.append(FinantialLine(leftHandle: "LIABILITIES", rightHandle: totalLiabilities))
+        
+        // Separator
+        build.append(FinantialLine(leftHandle: "---", rightHandle: nil))
+        
+        // Ownership
+        build.append(FinantialLine(leftHandle: "OWNERSHIP", rightHandle: nil))
+        build.append(FinantialLine(leftHandle: "Capital stock", rightHandle: capitalStock))
+        build.append(FinantialLine(leftHandle: "Retained earnings", rightHandle: retainedEarnings, bold:true))
+        let shareholdersEquity = capitalStock + retainedEarnings
+        build.append(FinantialLine(leftHandle: "Shareholders Equity", rightHandle: shareholdersEquity))
+        
+        let liabEquity = totalLiabilities + shareholdersEquity
+        build.append(FinantialLine(leftHandle: "Liabilities and Equity", rightHandle: liabEquity))
+        
+        return build
+    }
+    
+                                    
     func describe(){
         
-        print("\n Balance Sheet...")
-        print("Assets")
-        print("cash \(cash)")
-        print("receivables \(accountsReceivable)")
-        print("allow bad debts \(allowanceForBadDebts)")
-        print("inventory \(inventory)")
-        print("prepaid \(prepaidExpenses)")
-        print("--- PPE {")
-        print("auto: \(automobile), land:\(land)")
-        print("}")
+        // Assets
+        print("\n ASSETS -")
+        print("Cash \(cash)")
+        print("Receivables \(accountsReceivable)")
+        print("Inventory \(inventory)")
+        print("Prepaid expenses \(prepaidExpenses)")
         
-        let ttlAssets = cash + accountsReceivable + allowanceForBadDebts + inventory + prepaidExpenses + automobile + land
+        let currentAssets = cash + accountsReceivable + inventory + prepaidExpenses
+        print(" = CURRENT ASSETS: \(currentAssets)")
         
-        print("= TOTAL ASSETS: \(ttlAssets)")
+        print("PPE \(ppeValue)")
+        print("(-) depreciation: \(accumulatedDepreciation)")
         
-        print("Liabilities")
+        let totalAssets = currentAssets + ppeValue - accumulatedDepreciation
+        print(" = TOTAL ASSETS: \(totalAssets)")
+        
+        // Liabilities
+        print("\n LIABILITIES -")
         print("payable: \(accountsPayable)")
-        print("current lt debt \(currentLongTermDebt)")
-        print("current note payable \(currentNotePayable)")
-        print("mortgage: \(mortgagePayable)")
-        print("short mortgage \(mortgageShortTerm)")
-        print("auto payable \(autoPayable)")
-        print("auto short \(autoShort)")
+        print("short term payables \(shortTermPayables)")
+        print("short term debt \(shortTermDebt)")
         
-        print("Owner investment: \(ownersInvestment)")
-        print("Retained earnings: \(retainedEarnings)")
-        print("total owned equities: \(totalOwnedEquity)")
+        let currentLiabilities = accountsPayable + shortTermPayables + shortTermDebt
+        print(" = CURRENT LIABILITIES: \(currentLiabilities)")
         
-        let ttlLiab = accountsPayable + currentLongTermDebt + currentNotePayable + mortgagePayable + mortgageShortTerm + autoPayable + autoShort
+        print("Long term debt \(longTermDebt)")
+        let longTermLiabilities = longTermDebt
         
-        let earn = ownersInvestment + retainedEarnings + totalOwnedEquity
+        let ttlLiabilities = currentLiabilities + longTermLiabilities
         
-        print("Subtotal Liabilities: \(ttlLiab)")
-        print("Ownership: \(earn)")
+        // Ownership
+        print("\n OWNERSHIP")
+        print("Capital stock: \(capitalStock)")
+        print("Retained Earnings: \(retainedEarnings)")
         
-        print("= TOTAL LIABILITIES \(ttlLiab + earn)")
+        let shareholdersEquity = capitalStock + retainedEarnings
+        print("TOTAL SHAREHOLDERS EQUITY: \(shareholdersEquity)")
+        
+        print("\n **")
+        print(" Balance Assets:\(totalAssets)\n Liabilities:\(ttlLiabilities + shareholdersEquity)\n Check \(totalAssets - ttlLiabilities - shareholdersEquity)")
         
     }
     
-    func basePPECost(){
-        
-    }
 }
 
+/// Finantial line (for Statements)
+struct FinantialLine{
+    var leftHandle:String
+    var rightHandle:Double?
+    var bold:Bool = false
+}
+
+/// Calculates Finantial Debt
 class FinantialDebt{
     
-    var principal:Double    // The original amount one owes
-    var interest:Double     // Interest charged
-    var payments:Int        // number of payments (periods)
+    var principal:Double        // The original amount one owes
+    var interest:Double         // Interest charged
+    var numberOfPayments:Int    // number of payments (periods)
     
-    var period:Int = 0
+    var paidPeriods:Int = 0          // Counter for each payment
     
     /*
      n = 360 (30 years times 12 monthly payments per year)
@@ -260,31 +320,85 @@ class FinantialDebt{
     
     // Loan Payment = Amount / Discount Factor or P = A / D
     func loanPayment() -> Double{
-        let lft = pow((1 + interest), Double(payments)) - 1
-        let under = interest * pow(1 + interest, Double(payments))
-        let discount = lft/under
+        let n = numberOfPayments
+        let lft = pow((1 + interest), Double(n)) - 1
+        let under = interest * pow(1 + interest, Double(n))
+        let discountFactor = lft/under
         
-        return principal / discount
+        return principal / discountFactor
     }
     
-    init(amt:Double, pmt:Int, i:Double) {
+    /// The number of payments remaining in this debt
+    func paymentsRemaining() -> Int{
+        return numberOfPayments - paidPeriods
+    }
+    
+    /// The (FV) full amount that will be charged
+    func totalAmount() -> Double{
+        return loanPayment() * Double(numberOfPayments)
+    }
+    
+    // For Balance Sheet
+    
+    func shortTermOwed() -> Double{
+        let remaining = Double(paymentsRemaining() - numberOfPayments) * loanPayment()
+        let twelve = 12.0 * loanPayment()
+        return min(remaining, twelve)
+    }
+    
+    func longTermOwed() -> Double{
+        if paymentsRemaining() <= 12{
+            return 0
+        }else{
+            return Double(paymentsRemaining() - 12) * loanPayment()
+        }
+    }
+    
+    init(amt:Double, n:Int, i:Double) {
         self.principal = amt
-        self.payments = pmt
+        self.numberOfPayments = n
         self.interest = i / 100
     }
 }
 
-struct PPE:Codable{
+struct PPEItem:Codable{
     
     var name:String
-    var value:Double
-    var age:Int
-    var depreciation:Double // depreciation rate (0-1)
     
-    func currentValue() -> Double{
-        let current = Double(age) * (depreciation * value)
+    /// The current value (if sold) if the item
+    var value:Double
+    
+    /// Current age of item
+    var age:Int
+    
+    /// The rate in which the item depreciates
+    var depreciation:Double
+    
+    func accumulatedDepreciation() -> Double{
+        let current = Double(age) * depreciation * value
         return min(0.0, current)
     }
+    
+    /// period the item will live
+    func lifeSpam() -> Int{
+        
+        var deprecated:Double = 0
+        var periods:Int = 0
+        
+        while deprecated < value{
+            let partialDepreciation = depreciation * value
+            deprecated += partialDepreciation
+            periods += 1
+        }
+        
+        return periods
+    }
+    
+    /// Life remeining
+    func lifeRemaining() -> Int{
+        return lifeSpam() - age
+    }
+    
 }
 
 /*
