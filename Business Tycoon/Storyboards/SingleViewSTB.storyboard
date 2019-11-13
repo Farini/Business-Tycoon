@@ -77,6 +77,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Biz Browse" id="fr7-tY-20o"/>
                     <connections>
+                        <outlet property="sceneView" destination="85h-vB-itd" id="upu-mk-CuA"/>
                         <outlet property="tableView" destination="y6r-YR-CJu" id="MJq-UY-MFx"/>
                     </connections>
                 </viewController>

@@ -11,12 +11,17 @@ import SceneKit
 
 class BusinessBrowser: UIViewController {
     
+    
+    @IBOutlet weak var sceneView: SCNView!
+    
     @IBOutlet weak var tableView: UITableView!
     
     var ceo:CEO?
     
     var forSale:[Business] = []
     var selectedBiz:Business?
+    
+    var rowStrings:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,41 +35,47 @@ class BusinessBrowser: UIViewController {
         print("CEO has \(ceo.cash)")
         
         // Interface
-        // Scene
-        
-        /*
-        guard let scene = SCNScene(named: "cafe.scn") else{
-            print("Could not load file")
-            return
-        }
-        
-        sceneView.scene = scene
-        */
         
         // Add the buy button
         let buttonItem = UIBarButtonItem(title: "Buy", style: .done, target: self, action: #selector(buyShop))
         navigationItem.rightBarButtonItem = buttonItem
         
         // Model
-        print("Shop model")
+        // print("Shop model")
         
         let businesses = Bundle.main.decode([Business].self, from: "ForSale.json")
-        for business in businesses{
-            print("Biz: \(business.name)")
-            print("3D: \(business.model)")
+        for _ in businesses{
+            // print("Biz: \(business.name)")
+            // print("3D: \(business.model)")
         }
         selectedBiz = businesses.first
         forSale = businesses
         
+        if let b = selectedBiz { display(biz: b) }
+        
+        // Table
+        rowStrings.append("Carlos")
+        rowStrings.append("test")
+        rowStrings.append("test \n another \n line")
+        rowStrings.append("test")
+        rowStrings.append("test")
+        
+        tableView.register(BizStatementCell.self, forCellReuseIdentifier: "id1")
+        tableView.reloadData()
+        
     }
     
-    func layoutCurrentShop(){
+    func display(biz:Business){
         
-//        guard let shop = selectedShop else { return }
-//
-//        print("Laying out current shop: \(shop.name)")
-//        print("Accounting should be done here, then update tableview")
+        print("Showing Biz \(biz.name)")
         
+        // Scene
+        guard let scene = SCNScene(named: "cafe.scn") else{
+            print("Could not load file")
+            return
+        }
+        print("Showing model")
+        sceneView.scene = scene
         
     }
     
@@ -83,11 +94,16 @@ class BusinessBrowser: UIViewController {
 extension BusinessBrowser: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return rowStrings.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "id1", for: indexPath) as! BizStatementCell
+        // cell.textLabel?.text = rowStrings[indexPath.row]
+        // cell.textLabel?.numberOfLines = 0
+        cell.prepText(left: "Definition", right: rowStrings[indexPath.row])
+        return cell
     }
 }
 

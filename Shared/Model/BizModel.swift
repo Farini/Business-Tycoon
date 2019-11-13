@@ -24,6 +24,7 @@ struct Business:Codable{
     
     var finantials:Finantials
 }
+
 /*
 struct Address{
     
@@ -156,11 +157,7 @@ struct Cashflow:Codable{
     var netIncrease:Double
 }
 
-struct PPE:Codable{
-    var name:String
-    var value:Double
-    var depreciation:Double
-}
+
 
 struct BalanceSheet:Codable{
     
@@ -246,29 +243,48 @@ struct BalanceSheet:Codable{
     }
 }
 
-struct FinantialDebt{
+class FinantialDebt{
     
-    var principal:Double    // The amount one owes
+    var principal:Double    // The original amount one owes
     var interest:Double     // Interest charged
     var payments:Int        // number of payments (periods)
     
-    func begin(){
+    var period:Int = 0
+    
+    /*
+     n = 360 (30 years times 12 monthly payments per year)
+     i = .005 (6% annually expressed as 0.06, divided by 12 monthly payments per year—learn how to convert percentages to decimal format)
+     D = 166.7916 ({[(1+.005)^360] - 1} / [0.005(1+.005)^360])
+     P = A / D = 100,000 / 166.7916 = 599.55
+     */
+    
+    // Loan Payment = Amount / Discount Factor or P = A / D
+    func loanPayment() -> Double{
+        let lft = pow((1 + interest), Double(payments)) - 1
+        let under = interest * pow(1 + interest, Double(payments))
+        let discount = lft/under
         
-        var accrued:Double = 0.0
-        
-        for n in 0...payments{
-            
-            let current = principal - accrued
-            let pct = current * (1 + (interest / 100))
-            let carrier = current + pct
-            
-            accrued += current
-        }
+        return principal / discount
     }
     
-    var cycle:Int // = 0. Current payment
-    var paid:Double
+    init(amt:Double, pmt:Int, i:Double) {
+        self.principal = amt
+        self.payments = pmt
+        self.interest = i / 100
+    }
+}
+
+struct PPE:Codable{
     
+    var name:String
+    var value:Double
+    var age:Int
+    var depreciation:Double // depreciation rate (0-1)
+    
+    func currentValue() -> Double{
+        let current = Double(age) * (depreciation * value)
+        return min(0.0, current)
+    }
 }
 
 /*
