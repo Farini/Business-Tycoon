@@ -20,9 +20,10 @@ class BusinessBrowser: UIViewController {
     
     var forSale:[Business] = []
     var selectedBiz:Business?
+    var bizIndex:Int = 0
     
-    var rowStrings:[String] = []
-    var rowValues:[Double] = []
+//    var rowStrings:[String] = []
+//    var rowValues:[Double] = []
     
     var finantialLines:[FinantialLine] = []
     var incomeStmtLines:[FinantialLine] = []
@@ -50,10 +51,7 @@ class BusinessBrowser: UIViewController {
         // print("Shop model")
         
         let businesses = Bundle.main.decode([Business].self, from: "ForSale.json")
-        for _ in businesses{
-            // print("Biz: \(business.name)")
-            // print("3D: \(business.model)")
-        }
+        
         selectedBiz = businesses.first
         forSale = businesses
         
@@ -61,6 +59,8 @@ class BusinessBrowser: UIViewController {
         
         // Table
         tableView.register(BizStatementCell.self, forCellReuseIdentifier: "id1")
+        tableView.separatorStyle = .none
+//        let sty = tableView.separatorStyle
     }
     
     func display(biz:Business){
@@ -91,7 +91,26 @@ class BusinessBrowser: UIViewController {
         // Describe balance sheet
         print("\n ----- \n * \(business.name.uppercased()) BALANCE SHEET")
         business.finantials.balanceSheet.describe()
+        
     }
+    
+    @IBAction func goToNext(_ sender: UIButton) {
+        let nxtIdx = bizIndex + 1
+        if forSale.count - 1 >= nxtIdx{
+            let nb = forSale[nxtIdx]
+            display(biz: nb)
+            bizIndex = nxtIdx
+            
+        }else{
+            if let nb = forSale.first{
+                display(biz: nb)
+                bizIndex = 0
+            }else{
+                print("something went wrong")
+            }
+        }
+    }
+    
 }
 
 extension BusinessBrowser: UITableViewDataSource{

@@ -29,3 +29,18 @@ extension Bundle {
         return loaded
     }
 }
+
+extension Date {
+    
+    func weeksFrom(start:Date) -> Int?{
+        
+        let calendar = Calendar.current
+        let dateComps = calendar.dateComponents([.year, .weekOfYear, .month, .day], from: start, to: Date())
+        
+        let weeks = dateComps.weekOfYear ?? 0
+        if weeks > 0{
+            return weeks
+        }
+        
+    }
+}

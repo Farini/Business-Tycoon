@@ -15,6 +15,8 @@ class BizStatementCell: UITableViewCell {
     
     let normalSize:CGFloat = 17.0
     let boldSize:CGFloat = 18.0
+    
+    var line:FinantialLine?
 
 //    override func awakeFromNib() {
 //        super.awakeFromNib()
@@ -28,7 +30,7 @@ class BizStatementCell: UITableViewCell {
         
         // Left
         addSubview(leftLabel)
-        leftLabel.backgroundColor = UIColor.yellow
+        leftLabel.backgroundColor = UIColor.clear // UIColor.yellow
         leftLabel.text = "Left label"
         leftLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -41,7 +43,7 @@ class BizStatementCell: UITableViewCell {
         // Right
         addSubview(rightLabel)
         rightLabel.textAlignment = .right
-        rightLabel.backgroundColor = UIColor.green
+        rightLabel.backgroundColor = UIColor.clear //UIColor.green
         rightLabel.text = "Right label"
         rightLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -53,7 +55,29 @@ class BizStatementCell: UITableViewCell {
         
     }
     
+    override func layoutSubviews() {
+        // Separator
+                
+        backgroundColor = .clear
+                
+        let separator = CALayer()
+        separator.backgroundColor = UIColor.lightGray.cgColor
+                
+        // let y = contentView.bounds.height - 2.5
+        let x:CGFloat = 0.0
+                
+        let width = self.contentView.bounds.width
+        let height:CGFloat = line?.bold == true ? 2.0:1.0
+                
+        separator.frame = CGRect(origin: CGPoint(x: x, y: 0.0), size: CGSize(width: width, height: height))
+        self.layer.insertSublayer(separator, above: contentView.layer)
+                
+    }
+    
+    
     func prepareLine(line:FinantialLine){
+        
+        self.line = line
         
         // Left Label
         leftLabel.text = line.leftHandle
@@ -73,7 +97,12 @@ class BizStatementCell: UITableViewCell {
             leftLabel.font = UIFont.systemFont(ofSize: normalSize)
             rightLabel.font = UIFont.systemFont(ofSize: normalSize)
         }
+        
+        
+        
     }
+    
+    
     
     
     required init?(coder: NSCoder) {
@@ -84,6 +113,8 @@ class BizStatementCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        
+        
     }
 
 }

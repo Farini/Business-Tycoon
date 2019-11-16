@@ -23,6 +23,9 @@ struct Business:Codable{
     var model:String
     
     var finantials:Finantials
+    
+    var purchasedPPEs:String?
+    
 }
 
 // MARK: - Finantials
@@ -363,6 +366,13 @@ class FinantialDebt{
 
 struct PPEItem:Codable{
     
+    /* Property, plant and equipment
+     --------------------------------
+     PPE in Accounting. (pi pi i) or property, plant and equipment. abbreviation. (Accounting: Financial statements)
+     PPE is a classification on a balance sheet of a company's fixed assets, such as buildings, computers, furniture, land, and machinery,
+     that are expected to be used for more than a year.
+    */
+    
     var name:String
     
     /// The current value (if sold) if the item
@@ -372,10 +382,18 @@ struct PPEItem:Codable{
     var age:Int
     
     /// The rate in which the item depreciates
-    var depreciation:Double
+    var depreciationRate:Double
+    
+    /// The date ppe was purchased
+    var purchaseDate:Date // Should set at Date() when init the object
+    
+    /// Returns the number of weeks from purchase date
+    func calculateAgeInWeeks() -> Int{
+        return Date().weeksFrom(start: purchaseDate) ?? 0
+    }
     
     func accumulatedDepreciation() -> Double{
-        let current = Double(age) * depreciation * value
+        let current = Double(age) * depreciationRate * value
         return min(0.0, current)
     }
     
@@ -386,7 +404,7 @@ struct PPEItem:Codable{
         var periods:Int = 0
         
         while deprecated < value{
-            let partialDepreciation = depreciation * value
+            let partialDepreciation = depreciationRate * value
             deprecated += partialDepreciation
             periods += 1
         }
