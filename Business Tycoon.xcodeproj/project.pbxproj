@@ -10,6 +10,7 @@
 		6691C6332379D64800CE8E18 /* BusinessBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6691C6322379D64800CE8E18 /* BusinessBrowser.swift */; };
 		6691C6352379D6A600CE8E18 /* SingleViewSTB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6691C6342379D6A600CE8E18 /* SingleViewSTB.storyboard */; };
 		6691C6372379F20900CE8E18 /* ForSale.json in Resources */ = {isa = PBXBuildFile; fileRef = 6691C6362379F20900CE8E18 /* ForSale.json */; };
+		8558ECC8237F854700079EF9 /* BizScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8558ECC7237F854700079EF9 /* BizScene.swift */; };
 		857C3E8523721F3900DB6893 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C3E8423721F3900DB6893 /* AppDelegate.swift */; };
 		857C3E8723721F3900DB6893 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C3E8623721F3900DB6893 /* SceneDelegate.swift */; };
 		857C3E8923721F3900DB6893 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C3E8823721F3900DB6893 /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 		6691C6322379D64800CE8E18 /* BusinessBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessBrowser.swift; sourceTree = "<group>"; };
 		6691C6342379D6A600CE8E18 /* SingleViewSTB.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SingleViewSTB.storyboard; sourceTree = "<group>"; };
 		6691C6362379F20900CE8E18 /* ForSale.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ForSale.json; sourceTree = "<group>"; };
+		8558ECC7237F854700079EF9 /* BizScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BizScene.swift; sourceTree = "<group>"; };
 		857C3E8123721F3900DB6893 /* Business Tycoon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Business Tycoon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		857C3E8423721F3900DB6893 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		857C3E8623721F3900DB6893 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,14 @@
 				6691C6322379D64800CE8E18 /* BusinessBrowser.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8558ECC6237F851200079EF9 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				8558ECC7237F854700079EF9 /* BizScene.swift */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		857C3E7823721F3900DB6893 = {
@@ -144,6 +154,7 @@
 		85D82378237340BA005C3F5C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8558ECC6237F851200079EF9 /* Scenes */,
 				85D82379237340C6005C3F5C /* Data */,
 				85D8237F237343A0005C3F5C /* Model */,
 				85D8236F237322BD005C3F5C /* Art */,
@@ -276,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8558ECC8237F854700079EF9 /* BizScene.swift in Sources */,
 				6691C6332379D64800CE8E18 /* BusinessBrowser.swift in Sources */,
 				857C3E8923721F3900DB6893 /* ViewController.swift in Sources */,
 				857C3E8523721F3900DB6893 /* AppDelegate.swift in Sources */,
