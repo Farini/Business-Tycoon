@@ -52,7 +52,7 @@
 },
 {
     "name": "Coffee shop",
-    "model":"cafe.scn",
+    "model":"Petshop.scn",
     "finantials":{
         "incomeStatement":{
             "period":"W0",

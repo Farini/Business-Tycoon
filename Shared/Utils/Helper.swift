@@ -42,5 +42,6 @@ extension Date {
             return weeks
         }
         
+        return nil
     }
 }

@@ -418,13 +418,3 @@ struct PPEItem:Codable{
     }
     
 }
-
-/*
-struct AccountingPeriod:Equatable{
-    
-    var day:Int = 0
-    var week:Int = 0
-    var year:Int
-    
-}
- */

@@ -66,9 +66,9 @@ class BusinessBrowser: UIViewController {
     func display(biz:Business){
         
         print("Showing Biz \(biz.name)")
-        
+//        let mn = biz.model
         // Scene
-        guard let scene = SCNScene(named: "cafe.scn") else{
+        guard let scene = SCNScene(named: "\(biz.model)") else{
             print("Could not load file")
             return
         }
