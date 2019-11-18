@@ -33,11 +33,40 @@ class BizScene: SCNScene {
     override init() {
         
         // Setup lights
-        let light1 = SCNLight()
         
-        // setup background
+        // Ambient
+        let ambient = SCNLight()
+        ambient.type = .ambient
+        ambient.intensity = 120
         
-        // Setup camera
+        // Omni
+        let omni = SCNLight()
+        omni.type = .omni
+        omni.intensity = 700
+        // Color
+        omni.attenuationFalloffExponent = 2
+        omni.castsShadow = true
+        omni.shadowSampleCount = 3
+        // position
+        // comes with empty node?
+        
+        let empty = SCNNode()
+        empty.position = SCNVector3.init(2.5, 2.4, -0.3)
+        empty.light = omni
+        
+        // Camera
+        let camera = SCNCamera()
+        camera.usesOrthographicProjection = true
+        camera.orthographicScale = 3.0
+        camera.wantsHDR = false
+        camera.wantsDepthOfField = false
+        
+        let camPos = SCNVector3.init(-15.0, 52.0, 0.0)
+        let camNode = SCNNode()
+        camNode.position = camPos
+        camNode.eulerAngles = SCNVector3.init(9.0, 3.5, 7.0)
+        camNode.camera = camera
+        
         
         super.init()
     }
