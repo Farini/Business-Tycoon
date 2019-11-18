@@ -22,9 +22,6 @@ class BusinessBrowser: UIViewController {
     var selectedBiz:Business?
     var bizIndex:Int = 0
     
-//    var rowStrings:[String] = []
-//    var rowValues:[Double] = []
-    
     var finantialLines:[FinantialLine] = []
     var incomeStmtLines:[FinantialLine] = []
     
@@ -60,20 +57,20 @@ class BusinessBrowser: UIViewController {
         // Table
         tableView.register(BizStatementCell.self, forCellReuseIdentifier: "id1")
         tableView.separatorStyle = .none
-//        let sty = tableView.separatorStyle
     }
     
     func display(biz:Business){
         
         print("Showing Biz \(biz.name)")
-//        let mn = biz.model
+        
+        
         // Scene
-        guard let scene = SCNScene(named: "\(biz.model)") else{
-            print("Could not load file")
-            return
-        }
-        print("Showing model")
+        let scene = BizScene()
+        scene.addSceneModel(name: biz.model)
         sceneView.scene = scene
+        sceneView.isUserInteractionEnabled = true
+        sceneView.allowsCameraControl = true
+        
         
         // Table
         self.finantialLines = biz.finantials.balanceSheet.lines()

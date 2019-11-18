@@ -23,6 +23,7 @@
 - [ ] Determine how/what to buy things in game (for the biz), and generate revenue
 
 - [ ] Base SCNScene - Load Camera, lights, etc automatically
+
 - [ ] Sunlight - Light coming from sun (with an angle)
 - [ ] Natural light - light present everywhere
 - [ ] Emission light - light emitted in buildings
