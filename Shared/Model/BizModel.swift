@@ -22,10 +22,23 @@ struct Business:Codable{
     var name:String
     var model:String
     
+    var dob:Date? // date of birth
+    
     var finantials:Finantials
     
-    var purchasedPPEs:String?
+    // var purchasedPPEs:String?
     
+    
+    
+    func generateBalanceSheet() -> BalanceSheet?{
+        let calendar = Calendar(identifier: .gregorian)
+        
+        
+        return nil
+    }
+    
+    var expansionsOffered:[PPEItem] = []
+    var expansionsUsed:[PPEItem] = []
 }
 
 // MARK: - Finantials
@@ -299,6 +312,7 @@ struct BalanceSheet:Codable{
 }
 
 /// Finantial line (for Statements)
+// FIXME: - Change name to UIFinantialLine
 struct FinantialLine{
     var leftHandle:String
     var rightHandle:Double?
@@ -375,11 +389,8 @@ struct PPEItem:Codable{
     
     var name:String
     
-    /// The current value (if sold) if the item
-    var value:Double
-    
-    /// Current age of item
-    var age:Int
+    /// The value of object at purchase
+    var valueAtPurchase:Double
     
     /// The rate in which the item depreciates
     var depreciationRate:Double
@@ -387,14 +398,32 @@ struct PPEItem:Codable{
     /// The date ppe was purchased
     var purchaseDate:Date // Should set at Date() when init the object
     
+    // The effect it has in sales capacity
+    var effectInSalesCapacity:Double?       // If it increases the sale capacity of biz
+    var effectInSalesMultiplier:Double?     // if it increases sales (in general) of biz
+    var costReductionEffect:Double?         // Reduce cogs ?
+    
+    // Methods
+    
+    /// Current age of item
+    var age:Int = 0
+    
+    /// The current value (if sold) if the item
+    var currentValue:Double{
+        get{
+            let cv = valueAtPurchase - accumulatedDepreciation()
+            return max(0, cv)
+        }
+    }
+    
     /// Returns the number of weeks from purchase date
-    func calculateAgeInWeeks() -> Int{
+    func currentAgeInWeeks() -> Int{
         return Date().weeksFrom(start: purchaseDate) ?? 0
     }
     
     func accumulatedDepreciation() -> Double{
-        let current = Double(age) * depreciationRate * value
-        return min(0.0, current)
+        let current = Double(age) * depreciationRate * valueAtPurchase
+        return max(0.0, current)
     }
     
     /// period the item will live
@@ -403,8 +432,8 @@ struct PPEItem:Codable{
         var deprecated:Double = 0
         var periods:Int = 0
         
-        while deprecated < value{
-            let partialDepreciation = depreciationRate * value
+        while deprecated < valueAtPurchase{
+            let partialDepreciation = depreciationRate * valueAtPurchase
             deprecated += partialDepreciation
             periods += 1
         }
