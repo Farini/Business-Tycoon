@@ -11,6 +11,8 @@ import SceneKit
 
 class BizScene: SCNScene {
     
+    let debugging:Bool = false
+    
     var bizModelName:String?{
         didSet{
             
@@ -99,7 +101,9 @@ class BizScene: SCNScene {
     
     func addFloor(){
         
-        print("Adding floor")
+        if debugging{
+            print("Adding floor")
+        }
         
         let floor = SCNFloor()
         floor.reflectivity = 0.2
@@ -112,13 +116,14 @@ class BizScene: SCNScene {
         
         if !floor.materials.isEmpty{
             for material in floor.materials{
-                print("Floor material \(material.description)")
+                if debugging{
+                    print("Floor material metalness \(material.metalness.description)")
+                }
             }
         }
         
         let floorNode = SCNNode()
         floorNode.geometry = floor
-        
         rootNode.addChildNode(floorNode)
         
         /*
@@ -138,8 +143,9 @@ class BizScene: SCNScene {
     func addLightsCameraSky(){
         
         // MARK: - Lights
-        
-        print("Adding Lights")
+        if debugging{
+            print("Adding Lights")
+        }
         
         // Ambient
         let ambient = SCNLight()
@@ -151,7 +157,9 @@ class BizScene: SCNScene {
         ambientNode.light = ambient
         rootNode.addChildNode(ambientNode)
         
-        print("Ambient Light")
+        if debugging{
+            print("Ambient Light")
+        }
         
         // Omni
         let omni = SCNLight()
@@ -171,7 +179,9 @@ class BizScene: SCNScene {
         omniNode.light = omni
         rootNode.addChildNode(omniNode)
         
-        print("Omni Light")
+        if debugging{
+            print("Omni Light")
+        }
         
         // Camera
         let camera = SCNCamera()
@@ -195,7 +205,9 @@ class BizScene: SCNScene {
         rootNode.addChildNode(camNode)
         rootNode.camera = camera
         
-        print("Camera")
+        if debugging{
+            print("Camera")
+        }
         
         // Setup Sky
         
@@ -212,7 +224,7 @@ class BizScene: SCNScene {
         // background
         self.background.contents = sky.imageFromTexture()?.takeUnretainedValue()
         
-        print("SKY")
+        // print("SKY")
     }
     
     func duplicateNode(node:SCNNode, material:SCNMaterial) -> SCNNode{

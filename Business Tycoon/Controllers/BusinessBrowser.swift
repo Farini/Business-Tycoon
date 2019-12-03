@@ -11,7 +11,6 @@ import SceneKit
 
 class BusinessBrowser: UIViewController {
     
-    
     @IBOutlet weak var sceneView: SCNView!
     
     @IBOutlet weak var tableView: UITableView!
@@ -32,11 +31,21 @@ class BusinessBrowser: UIViewController {
         
         print("Biz browser showing")
         
-        // Data
-        let ceo = CEO(name: "Fari", cash: 5000, credit: 5000, tokens: 0, influence: 0, businesses: [])
-        print("CEO: \(ceo)")
-        self.ceo = ceo
-        print("CEO has \(ceo.cash)")
+        // Data (CEO)
+        
+        if let ceo = self.ceo{
+            
+            print("CEO was already here \(ceo.name) with $ \(ceo.cash)")
+            
+        }else{
+            
+            let ceo = CEO(name: "Farini")
+            
+            // CEO(name: "Fari", cash: 5000, credit: 5000, tokens: 0, influence: 0, businesses: [])
+            print("CEO: \(ceo)")
+            self.ceo = ceo
+            print("CEO has \(ceo.cash)")
+        }
         
         // Interface
         
@@ -82,12 +91,73 @@ class BusinessBrowser: UIViewController {
     @objc func buyShop(){
         
         
-        guard let business = selectedBiz else { return }
-        print("Wants to buy Biz \(business.name): \(business.finantials.incomeStatement.netIncome())")
+        guard let business = selectedBiz, let ceo = ceo else { return }
+        
+        
+        // PPE
+//        let ppe = PPEItem(name: "Espresso Machine", valueAtPurchase: 2000.0, depreciationRate: 0.01, purchaseDate: Date())
+//
+//        let age = ppe.age
+//        let ageInWeeks = ppe.currentAgeInWeeks()
+//        let currentValue = ppe.currentValue
+//        let accDepr = ppe.accumulatedDepreciation()
+//
+//        print("Rundown of \(ppe.name)...")
+//        print("Age \(age), weeks:\(ageInWeeks)")
+//        print("Current Value: \(currentValue), accum depr \(accDepr)")
+//        print("--- \n")
+
         
         // Describe balance sheet
         print("\n ----- \n * \(business.name.uppercased()) BALANCE SHEET")
         business.finantials.balanceSheet.describe()
+        
+        print("\n\n")
+        print("Wants to Purchase Biz \(business.name): Biz Income: \(business.finantials.incomeStatement.netIncome())")
+        
+        let bizValue:Double = business.finantials.balanceSheet.purchaseValue()
+        let cashValue:Double = ceo.cash
+        
+        print("\n_________\n")
+        
+        if cashValue >= bizValue{
+            print("Enough money to purchase biz")
+        }else{
+            let loanSize:Double = bizValue - cashValue
+            print("CEO \(ceo.name) does not have enough money. Want a loan of \(loanSize) ?")
+            // Ask (for now take)
+            completePurchase()
+        }
+        
+    }
+    
+    func completePurchase(){
+        
+        guard let business = selectedBiz, let ceo = ceo else { return }
+        
+        let bizValue:Double = business.finantials.balanceSheet.purchaseValue()
+        let cashValue:Double = ceo.cash
+        let loanSize:Double = bizValue - cashValue
+        
+        if loanSize > 0{
+            
+            print("Taking loan: \(loanSize)")
+            var accountsPayable = business.finantials.balanceSheet.accountsPayable
+            accountsPayable += loanSize
+            
+            print("Accounts Payable -(b4): \(business.finantials.balanceSheet.accountsPayable)")
+            print("Accounts Payable after: \(accountsPayable)")
+            
+            // Add to accounts payable
+            var balance:BalanceSheet = business.finantials.balanceSheet
+            balance.accountsPayable = accountsPayable
+            
+            // Take from shareholders equity?
+            balance.capitalStock -= accountsPayable
+            
+            balance.describe()
+            
+        }
         
     }
     

@@ -6,15 +6,40 @@ import Foundation
 
 // MARK: Base Structure
 
-struct CEO {
+//struct CEO:Codable {
+//
+//    var name:String
+//    var cash:Double
+//    var credit:Double
+//    var tokens:Int
+//    var influence:Int
+//
+//    var businesses:[Business]
+//}
+
+class CEO:Codable{
     
     var name:String
     var cash:Double
     var credit:Double
     var tokens:Int
     var influence:Int
+    var xp:Int
     
     var businesses:[Business]
+    
+    init(name:String) {
+        
+        self.name = name
+        self.cash = 5000
+        self.credit = 0
+        self.tokens = 0
+        self.influence = 0
+        self.xp = 0
+        
+        self.businesses = []
+    }
+    
 }
 
 struct Business:Codable{
@@ -31,14 +56,32 @@ struct Business:Codable{
     
     
     func generateBalanceSheet() -> BalanceSheet?{
+        
+        // Getting The time
+        
         let calendar = Calendar(identifier: .gregorian)
+        
+        let comps = calendar.dateComponents([.weekOfYear, .yearForWeekOfYear, .quarter], from: Date())
+        
+        let year = comps.yearForWeekOfYear ?? 0
+        let quarter = comps.quarter ?? 0
+        let week = comps.weekOfYear ?? 0
+        
+        print("Year \(year), Q:\(quarter), W:\(week)")
+        
+        // let bs = BalanceSheet(period: <#T##String#>, cash: <#T##Double#>, accountsReceivable: <#T##Double#>, inventory: <#T##Double#>, prepaidExpenses: <#T##Double#>, ppeValue: <#T##Double#>, accumulatedDepreciation: <#T##Double#>, accountsPayable: <#T##Double#>, shortTermPayables: <#T##Double#>, shortTermDebt: <#T##Double#>, longTermDebt: <#T##Double#>, capitalStock: <#T##Double#>, shares: <#T##Int#>, retainedEarnings: <#T##Double#>
+        
+        // add the ppe to thingy
+        // let ppe = PPEItem(name: "Expresso Machine", valueAtPurchase: 2000, depreciationRate: 0.01, purchaseDate: Date())
+        
+        // let ppe2 = PPEItem(name: "Xp Machina", valueAtPurchase: 5000, depreciationRate: 0.01, purchaseDate: Date(), effectInSalesCapacity: 2000.0, effectInSalesMultiplier: 200.0, costReductionEffect: 0.0, age: 0)
         
         
         return nil
     }
     
-    var expansionsOffered:[PPEItem] = []
-    var expansionsUsed:[PPEItem] = []
+    // var expansionsOffered:[PPEItem] = []
+    // var expansionsUsed:[PPEItem] = []
 }
 
 // MARK: - Finantials
@@ -263,6 +306,36 @@ struct BalanceSheet:Codable{
         return build
     }
     
+    func purchaseValue() -> Double{
+        
+        print("Calculating purchase value...")
+        
+        // Assets
+        let currentAssets = cash + accountsReceivable + inventory + prepaidExpenses
+        // print("CURRENT ASSETS: \(currentAssets)")
+        let totalAssets = currentAssets + ppeValue - accumulatedDepreciation
+        print("TOTAL ASSETS: \(totalAssets)")
+        
+        // Liab
+        let currentLiabilities = accountsPayable + shortTermPayables + shortTermDebt
+        let longTermLiabilities = longTermDebt
+        let totalLiabilities = currentLiabilities + longTermLiabilities
+        print("TOTAL LIABILITIES: \(totalLiabilities)")
+        
+        // This brings us to the final eval of how much of the money is actually the owners
+        
+        // print("Capital stock: \(capitalStock)")
+        // print("Retained Earnings: \(retainedEarnings)")
+        
+        // let oldMoney = capitalStock + retainedEarnings
+        // print("SHAREHOLDERS EQUITY (Old): \(oldMoney)")
+        
+        let newMoney = totalAssets - totalLiabilities
+        print("SHAREHOLDERS EQUITY (New): \(newMoney)")
+        
+        return newMoney
+    }
+    
                                     
     func describe(){
         
@@ -305,7 +378,11 @@ struct BalanceSheet:Codable{
         print("TOTAL SHAREHOLDERS EQUITY: \(shareholdersEquity)")
         
         print("\n **")
-        print(" Balance Assets:\(totalAssets)\n Liabilities:\(ttlLiabilities + shareholdersEquity)\n Check \(totalAssets - ttlLiabilities - shareholdersEquity)")
+        let check = totalAssets - ttlLiabilities - shareholdersEquity
+        print(" Balance Assets:\(totalAssets)\n Liabilities:\(ttlLiabilities + shareholdersEquity)\n Check \(check)")
+        if check == 0.0{
+            print("CHECK PASSED !!! 0.00")
+        }
         
     }
     

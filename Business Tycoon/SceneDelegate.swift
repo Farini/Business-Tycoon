@@ -16,8 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         print("Scene Starting...")
         
-        let stb = UIStoryboard(name: "SingleViewSTB", bundle: Bundle.main)
-        let first = stb.instantiateInitialViewController()
+        let loader = UIStoryboard(name: "GameLoader", bundle: Bundle.main)
+        let first = loader.instantiateInitialViewController()
         window?.rootViewController = first
         
         

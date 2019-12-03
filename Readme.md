@@ -14,6 +14,8 @@
 - [X] Refine Data model #1 - Income Statement and Balance Sheet basics
 - [X] Preview of business
 
+- [X] Checks and Balances work at Biz purchase
+
 - [ ] Refine Data model #2 - Debt and PPE objects
 - [ ] Data Model of Companies + Maps + DAE files + CEO, etc.
 - [ ] Neighborhoods
