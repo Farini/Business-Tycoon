@@ -10,8 +10,10 @@
 		6691C6332379D64800CE8E18 /* BusinessBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6691C6322379D64800CE8E18 /* BusinessBrowser.swift */; };
 		6691C6352379D6A600CE8E18 /* SingleViewSTB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6691C6342379D6A600CE8E18 /* SingleViewSTB.storyboard */; };
 		6691C6372379F20900CE8E18 /* ForSale.json in Resources */ = {isa = PBXBuildFile; fileRef = 6691C6362379F20900CE8E18 /* ForSale.json */; };
+		8524D82C239828080036AB75 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524D82B239828080036AB75 /* Log.swift */; };
 		8558ECC8237F854700079EF9 /* BizScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8558ECC7237F854700079EF9 /* BizScene.swift */; };
 		8558ECCC23819DB700079EF9 /* Petshop.scn in Resources */ = {isa = PBXBuildFile; fileRef = 8558ECCB23819DB700079EF9 /* Petshop.scn */; };
+		8576828F23B53704007E1167 /* PPESample.json in Resources */ = {isa = PBXBuildFile; fileRef = 8576828E23B53704007E1167 /* PPESample.json */; };
 		857C3E8523721F3900DB6893 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C3E8423721F3900DB6893 /* AppDelegate.swift */; };
 		857C3E8723721F3900DB6893 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C3E8623721F3900DB6893 /* SceneDelegate.swift */; };
 		857C3E8923721F3900DB6893 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C3E8823721F3900DB6893 /* ViewController.swift */; };
@@ -40,8 +42,10 @@
 		6691C6322379D64800CE8E18 /* BusinessBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessBrowser.swift; sourceTree = "<group>"; };
 		6691C6342379D6A600CE8E18 /* SingleViewSTB.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SingleViewSTB.storyboard; sourceTree = "<group>"; };
 		6691C6362379F20900CE8E18 /* ForSale.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ForSale.json; sourceTree = "<group>"; };
+		8524D82B239828080036AB75 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		8558ECC7237F854700079EF9 /* BizScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BizScene.swift; sourceTree = "<group>"; };
 		8558ECCB23819DB700079EF9 /* Petshop.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Petshop.scn; sourceTree = "<group>"; };
+		8576828E23B53704007E1167 /* PPESample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PPESample.json; sourceTree = "<group>"; };
 		857C3E8123721F3900DB6893 /* Business Tycoon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Business Tycoon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		857C3E8423721F3900DB6893 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		857C3E8623721F3900DB6893 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 				85D8237A237340D4005C3F5C /* Businesses.json */,
 				85D823822374BBA6005C3F5C /* BizData.json */,
 				6691C6362379F20900CE8E18 /* ForSale.json */,
+				8576828E23B53704007E1167 /* PPESample.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				85D8237D2373411A005C3F5C /* Helper.swift */,
+				8524D82B239828080036AB75 /* Log.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -294,6 +300,7 @@
 				85DF6B022396E49200D7914F /* GameLoader.storyboard in Resources */,
 				85D8237723732F83005C3F5C /* cafe.scn in Resources */,
 				85DF6B062396EB3200D7914F /* Overview.storyboard in Resources */,
+				8576828F23B53704007E1167 /* PPESample.json in Resources */,
 				85D823832374BBA6005C3F5C /* BizData.json in Resources */,
 				85D8237B237340D4005C3F5C /* Businesses.json in Resources */,
 				857C3E8C23721F3900DB6893 /* Main.storyboard in Resources */,
@@ -316,6 +323,7 @@
 				857C3E8523721F3900DB6893 /* AppDelegate.swift in Sources */,
 				85D82391237B4E7D005C3F5C /* BizStatementCell.swift in Sources */,
 				85D8237E2373411A005C3F5C /* Helper.swift in Sources */,
+				8524D82C239828080036AB75 /* Log.swift in Sources */,
 				85D823872374C591005C3F5C /* IncomePreviewer.swift in Sources */,
 				857C3E8723721F3900DB6893 /* SceneDelegate.swift in Sources */,
 				85DF6B082396EDD300D7914F /* CEOOverviewController.swift in Sources */,

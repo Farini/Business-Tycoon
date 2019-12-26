@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Expresso Machine 1",
+        "valueAtPurchase":1000.00,
+        "depreciationRate":0.01,
+        "effectInSalesCapacity":1000.00
+    },
+    {
+        "name": "Expresso Machine 2",
+        "valueAtPurchase":1000.00,
+        "depreciationRate":0.01,
+        "effectInSalesCapacity":1000.00
+    },
+    {
+        "name": "Expresso Machine 3",
+        "valueAtPurchase":1000.00,
+        "depreciationRate":0.01,
+        "effectInSalesCapacity":1000.00
+    },
+    {
+        "name": "Kooler 1",
+        "valueAtPurchase":1000.00,
+        "depreciationRate":0.01,
+        "effectInSalesCapacity":1000.00
+    },
+    {
+        "name": "FryOlator 1",
+        "valueAtPurchase":1000.00,
+        "depreciationRate":0.01,
+        "effectInSalesCapacity":1000.00
+    },
+    {
+        "name": "Ninja Shaker",
+        "valueAtPurchase":1000.00,
+        "depreciationRate":0.01,
+        "effectInSalesCapacity":1000.00
+    },
+    {
+        "name": "Chef Bot",
+        "valueAtPurchase":1000.00,
+        "depreciationRate":0.01,
+        "effectInSalesCapacity":1000.00
+    },
+    {
+        "name": "Cleaner Bot",
+        "valueAtPurchase":1000.00,
+        "depreciationRate":0.01,
+        "effectInSalesCapacity":1000.00
+    }
+]

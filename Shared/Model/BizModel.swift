@@ -523,4 +523,35 @@ struct PPEItem:Codable{
         return lifeSpam() - age
     }
     
+    // MARK - Inits
+    
+    
+    
+}
+
+
+class BizBase:Codable{
+    
+    var customers:Int = 1
+    var walkIns:Int = 1
+    
+    // PPE
+    
+    /// PPE's available for purchase
+    var availablePPEs:[PPEItem] = []
+    
+    var includedPPEs:[PPEItem] = []
+    
+    // Product
+    
+    var productUnitCost:Double = 1.0
+    
+    
+    init() {
+        
+    }
+}
+
+class LandProperties:Codable{
+    
 }
