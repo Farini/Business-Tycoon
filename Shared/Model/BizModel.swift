@@ -455,7 +455,7 @@ class FinantialDebt{
     }
 }
 
-struct PPEItem:Codable{
+class PPEItem:Codable, Identifiable{
     
     /* Property, plant and equipment
      --------------------------------
@@ -463,6 +463,8 @@ struct PPEItem:Codable{
      PPE is a classification on a balance sheet of a company's fixed assets, such as buildings, computers, furniture, land, and machinery,
      that are expected to be used for more than a year.
     */
+    
+    var id = UUID()
     
     var name:String
     
@@ -473,25 +475,41 @@ struct PPEItem:Codable{
     var depreciationRate:Double
     
     /// The date ppe was purchased
-    var purchaseDate:Date // Should set at Date() when init the object
+    var purchaseDate:Date = Date() // Should set at Date() when init the object
     
     // The effect it has in sales capacity
     var effectInSalesCapacity:Double?       // If it increases the sale capacity of biz
-    var effectInSalesMultiplier:Double?     // if it increases sales (in general) of biz
-    var costReductionEffect:Double?         // Reduce cogs ?
+    // var effectInSalesMultiplier:Double? = 1.0     // if it increases sales (in general) of biz
+    // var costReductionEffect:Double? = 0         // Reduce cogs ?
     
     // Methods
     
     /// Current age of item
     var age:Int = 0
+
+    // MARK - Inits
     
-    /// The current value (if sold) if the item
-    var currentValue:Double{
-        get{
-            let cv = valueAtPurchase - accumulatedDepreciation()
-            return max(0, cv)
-        }
+    enum codingKeys:String, CodingKey {
+        case name;
+        case valueAtPurchase;
+        case depreciationRate;
+        case effectInSalesCapacity;
     }
+    
+    required init(from decoder: Decoder) throws {
+        
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        name = try container.decode(String.self, forKey: .name)
+        valueAtPurchase = try container.decode(Double.self, forKey: .valueAtPurchase)
+        depreciationRate = try container.decode(Double.self, forKey: .depreciationRate)
+        effectInSalesCapacity = try container.decode(Double.self, forKey: .effectInSalesCapacity)
+        
+        // id = try container.decode(Int.self, forKey: .id)
+        // let giftContainer = try container.nestedContainer(keyedBy: GiftKeys.self, forKey: .gift)
+        // favoriteToy = try giftContainer.decode(Toy.self, forKey: .toy)
+    }
+    
     
     /// Returns the number of weeks from purchase date
     func currentAgeInWeeks() -> Int{
@@ -523,11 +541,15 @@ struct PPEItem:Codable{
         return lifeSpam() - age
     }
     
-    // MARK - Inits
-    
-    
+    /// The current value (if sold) if the item
+    func getCurrentValue() -> Double{
+        let cv = valueAtPurchase - accumulatedDepreciation()
+        return max(0, cv)
+    }
     
 }
+
+
 
 
 class BizBase:Codable{

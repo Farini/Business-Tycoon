@@ -8,6 +8,7 @@
 
 import UIKit
 import SceneKit
+import SwiftUI
 
 class BusinessBrowser: UIViewController {
     
@@ -159,6 +160,15 @@ class BusinessBrowser: UIViewController {
             
         }
         
+        self.performSegue(withIdentifier: "buybiz", sender: self)
+        
+    }
+    
+    @IBSegueAction func addSwiftUIView(_ coder: NSCoder) -> UIViewController? {
+        
+        // Swift UI View
+        let ctrlView = BizControl().environmentObject(BusinessActions())
+        return UIHostingController(coder: coder, rootView: ctrlView)
     }
     
     @IBAction func goToNext(_ sender: UIButton) {
@@ -177,6 +187,10 @@ class BusinessBrowser: UIViewController {
             }
         }
     }
+    
+    
+    // MARK: - Navigation
+    
     
 }
 

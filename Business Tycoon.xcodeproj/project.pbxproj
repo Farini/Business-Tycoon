@@ -20,6 +20,10 @@
 		857C3E8C23721F3900DB6893 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 857C3E8A23721F3900DB6893 /* Main.storyboard */; };
 		857C3E8E23721F4100DB6893 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 857C3E8D23721F4100DB6893 /* Assets.xcassets */; };
 		857C3E9123721F4100DB6893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 857C3E8F23721F4100DB6893 /* LaunchScreen.storyboard */; };
+		857EE7A323BE7401001DF37D /* BizControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EE7A223BE7401001DF37D /* BizControl.swift */; };
+		857EE7A623BE7460001DF37D /* EnvironmentObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EE7A523BE7460001DF37D /* EnvironmentObj.swift */; };
+		857EE7A823BE750F001DF37D /* StaffBonusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EE7A723BE750F001DF37D /* StaffBonusView.swift */; };
+		857EE7AA23BE835E001DF37D /* PPEPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EE7A923BE835E001DF37D /* PPEPickerView.swift */; };
 		85D8236E2372850F005C3F5C /* IncomeStatementView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85D8236D2372850F005C3F5C /* IncomeStatementView.xib */; };
 		85D8237523732B3C005C3F5C /* IncomeStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D8237423732B3C005C3F5C /* IncomeStatementView.swift */; };
 		85D8237723732F83005C3F5C /* cafe.scn in Resources */ = {isa = PBXBuildFile; fileRef = 85D8237623732F83005C3F5C /* cafe.scn */; };
@@ -54,6 +58,10 @@
 		857C3E8D23721F4100DB6893 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		857C3E9023721F4100DB6893 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		857C3E9223721F4100DB6893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		857EE7A223BE7401001DF37D /* BizControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BizControl.swift; path = ../../../../BizTycoonSUI/BizTycoonSUI/BizControl.swift; sourceTree = "<group>"; };
+		857EE7A523BE7460001DF37D /* EnvironmentObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentObj.swift; sourceTree = "<group>"; };
+		857EE7A723BE750F001DF37D /* StaffBonusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffBonusView.swift; sourceTree = "<group>"; };
+		857EE7A923BE835E001DF37D /* PPEPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPEPickerView.swift; sourceTree = "<group>"; };
 		85D8236D2372850F005C3F5C /* IncomeStatementView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeStatementView.xib; sourceTree = "<group>"; };
 		85D8237423732B3C005C3F5C /* IncomeStatementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeStatementView.swift; sourceTree = "<group>"; };
 		85D8237623732F83005C3F5C /* cafe.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = cafe.scn; sourceTree = "<group>"; };
@@ -90,6 +98,7 @@
 		6691C6312379D61500CE8E18 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				857EE7A123BE73E5001DF37D /* SwiftUI */,
 				85DF6B032396E58200D7914F /* LoadingController.swift */,
 				85DF6B072396EDD300D7914F /* CEOOverviewController.swift */,
 				6691C6322379D64800CE8E18 /* BusinessBrowser.swift */,
@@ -140,6 +149,23 @@
 			path = "Business Tycoon";
 			sourceTree = "<group>";
 		};
+		857EE7A023BE73D8001DF37D /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				857EE7A723BE750F001DF37D /* StaffBonusView.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		857EE7A123BE73E5001DF37D /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				857EE7A223BE7401001DF37D /* BizControl.swift */,
+				857EE7A923BE835E001DF37D /* PPEPickerView.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 		85D8236F237322BD005C3F5C /* Art */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +187,7 @@
 		85D8237323732B18005C3F5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				857EE7A023BE73D8001DF37D /* SwiftUI */,
 				85D8238F237B4E38005C3F5C /* Cells */,
 				85D8236D2372850F005C3F5C /* IncomeStatementView.xib */,
 				85D8237423732B3C005C3F5C /* IncomeStatementView.swift */,
@@ -208,6 +235,7 @@
 				85D8238C237870C2005C3F5C /* ModelReadme.md */,
 				85DF6AFF2396DED100D7914F /* PlayerDB.swift */,
 				85D82380237343CD005C3F5C /* BizModel.swift */,
+				857EE7A523BE7460001DF37D /* EnvironmentObj.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -315,6 +343,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				857EE7A823BE750F001DF37D /* StaffBonusView.swift in Sources */,
+				857EE7A323BE7401001DF37D /* BizControl.swift in Sources */,
 				85DF6B042396E58200D7914F /* LoadingController.swift in Sources */,
 				8558ECC8237F854700079EF9 /* BizScene.swift in Sources */,
 				6691C6332379D64800CE8E18 /* BusinessBrowser.swift in Sources */,
@@ -327,8 +357,10 @@
 				85D823872374C591005C3F5C /* IncomePreviewer.swift in Sources */,
 				857C3E8723721F3900DB6893 /* SceneDelegate.swift in Sources */,
 				85DF6B082396EDD300D7914F /* CEOOverviewController.swift in Sources */,
+				857EE7AA23BE835E001DF37D /* PPEPickerView.swift in Sources */,
 				85D8237523732B3C005C3F5C /* IncomeStatementView.swift in Sources */,
 				85D82381237343CD005C3F5C /* BizModel.swift in Sources */,
+				857EE7A623BE7460001DF37D /* EnvironmentObj.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

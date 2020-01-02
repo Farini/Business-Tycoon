@@ -35,6 +35,11 @@ class CEOOverviewController: UIViewController {
         
         print("Overview CEO \(ceo.name)")
         
+        let shopArray:[PPEItem] = Bundle.main.decode([PPEItem].self, from: "PPESample.json")
+        for item in shopArray{
+            print("Item: \(item.name)")
+        }
+        
     }
     
     @IBAction func shopForBusinesses(_ sender: UIButton) {

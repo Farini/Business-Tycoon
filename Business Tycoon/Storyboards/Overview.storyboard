@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tIl-UC-f2o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tIl-UC-f2o">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +12,7 @@
             <objects>
                 <viewController id="wcZ-XY-uGY" customClass="CEOOverviewController" customModule="Business_Tycoon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R6c-gC-UiC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kSs-zI-hUC">
@@ -67,7 +67,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="O0N-wH-zvE">
-                                <rect key="frame" x="0.0" y="330" width="414" height="566"/>
+                                <rect key="frame" x="0.0" y="330" width="414" height="532"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="OiU-xq-28m">
@@ -119,14 +119,21 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="HRp-p4-Lj4" firstAttribute="leading" secondItem="gMY-O6-FpH" secondAttribute="leading" id="4bd-rV-qoa"/>
-                            <constraint firstAttribute="bottom" secondItem="O0N-wH-zvE" secondAttribute="bottom" id="AL2-ji-JLf"/>
+                            <constraint firstItem="O0N-wH-zvE" firstAttribute="bottom" secondItem="gMY-O6-FpH" secondAttribute="bottom" id="6j7-Ka-WFc"/>
+                            <constraint firstItem="O0N-wH-zvE" firstAttribute="trailing" secondItem="gMY-O6-FpH" secondAttribute="trailing" id="Hvy-QR-oBa"/>
                             <constraint firstItem="unu-M7-qgr" firstAttribute="leading" secondItem="gMY-O6-FpH" secondAttribute="leading" id="RW0-En-d4h"/>
                             <constraint firstItem="unu-M7-qgr" firstAttribute="top" secondItem="gMY-O6-FpH" secondAttribute="top" id="Ror-Ua-Tln"/>
                             <constraint firstItem="O0N-wH-zvE" firstAttribute="leading" secondItem="gMY-O6-FpH" secondAttribute="leading" id="UdE-ZR-wEc"/>
+                            <constraint firstItem="O0N-wH-zvE" firstAttribute="leading" secondItem="gMY-O6-FpH" secondAttribute="leading" id="UxO-7n-SA0"/>
+                            <constraint firstItem="O0N-wH-zvE" firstAttribute="leading" secondItem="gMY-O6-FpH" secondAttribute="leading" id="WsG-ki-TQc"/>
                             <constraint firstItem="O0N-wH-zvE" firstAttribute="trailing" secondItem="gMY-O6-FpH" secondAttribute="trailing" id="cDy-YV-tIK"/>
+                            <constraint firstItem="O0N-wH-zvE" firstAttribute="top" secondItem="HRp-p4-Lj4" secondAttribute="bottom" constant="8" id="kwD-vq-qfB"/>
                             <constraint firstItem="unu-M7-qgr" firstAttribute="trailing" secondItem="gMY-O6-FpH" secondAttribute="trailing" id="lv0-C4-x4g"/>
+                            <constraint firstItem="O0N-wH-zvE" firstAttribute="bottom" secondItem="gMY-O6-FpH" secondAttribute="bottom" id="o0F-7H-iGT"/>
                             <constraint firstItem="HRp-p4-Lj4" firstAttribute="trailing" secondItem="gMY-O6-FpH" secondAttribute="trailing" id="p2N-lS-m6p"/>
                             <constraint firstItem="HRp-p4-Lj4" firstAttribute="top" secondItem="unu-M7-qgr" secondAttribute="bottom" constant="8" id="peH-D7-kz6"/>
+                            <constraint firstItem="O0N-wH-zvE" firstAttribute="trailing" secondItem="gMY-O6-FpH" secondAttribute="trailing" id="q1V-nR-5HQ"/>
+                            <constraint firstItem="O0N-wH-zvE" firstAttribute="top" secondItem="HRp-p4-Lj4" secondAttribute="bottom" constant="8" id="tib-jq-1r7"/>
                             <constraint firstItem="O0N-wH-zvE" firstAttribute="top" secondItem="HRp-p4-Lj4" secondAttribute="bottom" constant="8" id="zEb-xp-Yz4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gMY-O6-FpH"/>
@@ -135,11 +142,22 @@
                     <connections>
                         <outlet property="sceneView" destination="unu-M7-qgr" id="pXT-TI-Gil"/>
                         <outlet property="tableView" destination="O0N-wH-zvE" id="TzD-DT-yyB"/>
+                        <segue destination="1Af-cb-dqt" kind="show" identifier="buybiz" destinationCreationSelector="addSwiftUIView:" id="HA0-1T-GEz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XKz-IO-fae" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="678" y="-484"/>
+            <point key="canvasLocation" x="706" y="-484"/>
+        </scene>
+        <!--Hosting Controller-->
+        <scene sceneID="xhq-jO-AsG">
+            <objects>
+                <hostingController id="1Af-cb-dqt" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="IYa-ed-d5q"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eaw-9o-OPi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1557" y="-484"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NOe-5K-235">
