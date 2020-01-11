@@ -4,18 +4,7 @@
 
 import Foundation
 
-// MARK: Base Structure
-
-//struct CEO:Codable {
-//
-//    var name:String
-//    var cash:Double
-//    var credit:Double
-//    var tokens:Int
-//    var influence:Int
-//
-//    var businesses:[Business]
-//}
+// MARK: - Base Structure
 
 class CEO:Codable{
     
@@ -42,17 +31,60 @@ class CEO:Codable{
     
 }
 
-struct Business:Codable{
+class Business:Codable{
     
     var name:String
     var model:String
     
-    var dob:Date? // date of birth
+    var dob:Date // date of birth
     
     var finantials:Finantials
     
-    // var purchasedPPEs:String?
+    var ppeTree:[PPEItem]
+    var ppeAquired:[PPEItem]
     
+    enum codingKeys:String, CodingKey {
+        case name;
+        case model;
+        
+        case finantials;
+        
+        case dob;
+        case ppeTree;
+    }
+    
+    required init(from decoder: Decoder) throws {
+        
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        name = try container.decode(String.self, forKey: .name)
+        model = try container.decode(String.self, forKey: .model)
+        
+        finantials = try container.decode(Finantials.self, forKey: .finantials)
+        
+        // dob (birth)
+        if let birth = try? container.decodeIfPresent(Date.self, forKey: .dob){
+            dob = birth
+        }else{
+            dob = Date()
+        }
+        
+        // PPE - Tree
+        if let tree = try? container.decodeIfPresent([PPEItem].self, forKey: .ppeTree){
+            ppeTree = tree
+        }else{
+            ppeTree = []
+        }
+        
+        // PPE - Aquired
+        if let aquired = try? container.decodeIfPresent([PPEItem].self, forKey: .ppeAquired){
+            ppeAquired = aquired
+        }else{
+            ppeAquired = []
+        }
+        
+        
+    }
     
     
     func generateBalanceSheet() -> BalanceSheet?{
@@ -68,13 +100,6 @@ struct Business:Codable{
         let week = comps.weekOfYear ?? 0
         
         print("Year \(year), Q:\(quarter), W:\(week)")
-        
-        // let bs = BalanceSheet(period: <#T##String#>, cash: <#T##Double#>, accountsReceivable: <#T##Double#>, inventory: <#T##Double#>, prepaidExpenses: <#T##Double#>, ppeValue: <#T##Double#>, accumulatedDepreciation: <#T##Double#>, accountsPayable: <#T##Double#>, shortTermPayables: <#T##Double#>, shortTermDebt: <#T##Double#>, longTermDebt: <#T##Double#>, capitalStock: <#T##Double#>, shares: <#T##Int#>, retainedEarnings: <#T##Double#>
-        
-        // add the ppe to thingy
-        // let ppe = PPEItem(name: "Expresso Machine", valueAtPurchase: 2000, depreciationRate: 0.01, purchaseDate: Date())
-        
-        // let ppe2 = PPEItem(name: "Xp Machina", valueAtPurchase: 5000, depreciationRate: 0.01, purchaseDate: Date(), effectInSalesCapacity: 2000.0, effectInSalesMultiplier: 200.0, costReductionEffect: 0.0, age: 0)
         
         
         return nil
@@ -475,17 +500,17 @@ class PPEItem:Codable, Identifiable{
     var depreciationRate:Double
     
     /// The date ppe was purchased
-    var purchaseDate:Date = Date() // Should set at Date() when init the object
+    var purchaseDate:Date
     
     // The effect it has in sales capacity
-    var effectInSalesCapacity:Double?       // If it increases the sale capacity of biz
-    // var effectInSalesMultiplier:Double? = 1.0     // if it increases sales (in general) of biz
-    // var costReductionEffect:Double? = 0         // Reduce cogs ?
+    var salesCap:Double                 // If it increases the sale capacity of biz
+    var salesPitch:Double               // if it increases sales (in general) of biz
+    var costReduction:Double            // Reduce cogs ?
     
     // Methods
     
     /// Current age of item
-    var age:Int = 0
+    // var age:Int = 0
 
     // MARK - Inits
     
@@ -493,7 +518,11 @@ class PPEItem:Codable, Identifiable{
         case name;
         case valueAtPurchase;
         case depreciationRate;
-        case effectInSalesCapacity;
+        
+        case purchaseDate;
+        case salesCap;
+        case salesPitch;
+        case costReduction;
     }
     
     required init(from decoder: Decoder) throws {
@@ -503,13 +532,43 @@ class PPEItem:Codable, Identifiable{
         name = try container.decode(String.self, forKey: .name)
         valueAtPurchase = try container.decode(Double.self, forKey: .valueAtPurchase)
         depreciationRate = try container.decode(Double.self, forKey: .depreciationRate)
-        effectInSalesCapacity = try container.decode(Double.self, forKey: .effectInSalesCapacity)
         
-        // id = try container.decode(Int.self, forKey: .id)
-        // let giftContainer = try container.nestedContainer(keyedBy: GiftKeys.self, forKey: .gift)
-        // favoriteToy = try giftContainer.decode(Toy.self, forKey: .toy)
+        // Sales
+        
+        if let cap = try? container.decodeIfPresent(Double.self, forKey: .salesCap){
+            salesCap = cap
+        }else{
+            salesCap = 0
+        }
+        
+        if let pitch = try? container.decodeIfPresent(Double.self, forKey: .salesPitch){
+            salesPitch = pitch
+        }else{
+            salesPitch = 0.0
+        }
+        
+        if let reduction = try? container.decodeIfPresent(Double.self, forKey: .costReduction){
+            costReduction = reduction
+        }else{
+            costReduction = 0.0
+        }
+        
+        if let date = try? container.decodeIfPresent(Date.self, forKey: .purchaseDate){
+            purchaseDate = date
+        }else{
+            purchaseDate = Date()
+        }
     }
     
+    init(example:Bool){
+        name = "PPE Item"
+        valueAtPurchase = 2.0
+        depreciationRate = 0.1
+        purchaseDate = Date()
+        salesPitch = 0.0
+        salesCap = 0.0
+        costReduction = 0.0
+    }
     
     /// Returns the number of weeks from purchase date
     func currentAgeInWeeks() -> Int{
@@ -517,7 +576,7 @@ class PPEItem:Codable, Identifiable{
     }
     
     func accumulatedDepreciation() -> Double{
-        let current = Double(age) * depreciationRate * valueAtPurchase
+        let current = Double(currentAgeInWeeks()) * depreciationRate * valueAtPurchase
         return max(0.0, current)
     }
     
@@ -538,7 +597,7 @@ class PPEItem:Codable, Identifiable{
     
     /// Life remeining
     func lifeRemaining() -> Int{
-        return lifeSpam() - age
+        return lifeSpam() - currentAgeInWeeks()
     }
     
     /// The current value (if sold) if the item
@@ -546,6 +605,7 @@ class PPEItem:Codable, Identifiable{
         let cv = valueAtPurchase - accumulatedDepreciation()
         return max(0, cv)
     }
+    
     
 }
 
@@ -574,6 +634,3 @@ class BizBase:Codable{
     }
 }
 
-class LandProperties:Codable{
-    
-}

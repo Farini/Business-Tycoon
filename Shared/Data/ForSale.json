@@ -48,10 +48,229 @@
             "ownerInvestment":15000.0,
             "netIncrease":0.0
         }
+    },
+    "ppeTree":[
+    {
+        "name":"Expresso Machine 1",
+        "valueAtPurchase":1000.00,
+        "depreciationRate":0.01,
+        "salesCap":1000.00
+    },
+    {
+        "name":"Expresso Machine 2",
+        "valueAtPurchase":1000.00,
+        "depreciationRate":0.05,
+        "costReduction":15.00,
+        "salesCap":1000.00
     }
+    ]
 },
 {
     "name": "Coffee shop",
+    "model":"Petshop.scn",
+    "finantials":{
+        "incomeStatement":{
+            "period":"W0",
+            "revenue":1300.00,
+            "costOfSales":400.00,
+            "advertising":150.00,
+            "badDebtExpense":0.00,
+            "bankCharges":0.00,
+            "insurance":80.0,
+            "payrollTaxes":80.00,
+            "rent":100.00,
+            "supplies":0.00,
+            "wages":450.00,
+            "repairRevenue":0.0,
+            "interestExpense":0.0,
+            "incomeTaxes":0.0
+        },
+        "balanceSheet":{
+            "period":"W0",
+            "cash":10000.00,
+            "accountsReceivable":0.00,
+            "inventory":5000.00,
+            "prepaidExpenses":0.0,
+            "ppeValue":1500.0,
+            "accumulatedDepreciation":0.0,
+            "accountsPayable":0.0,
+            "shortTermPayables":0.0,
+            "shortTermDebt":0.0,
+            "longTermDebt":0.0,
+            "capitalStock":0.0,
+            "shares":1000,
+            "retainedEarnings":0.0,
+        },
+        "cashflow":{
+            "period":"W0",
+            "netIncome":0.0,
+            "accountsReceivable":0.0,
+            "inventory":0.0,
+            "prepaidExpenses":0.00,
+            "accountsPayable":0.0,
+            "purchases":0.0,
+            "mortgage":0.0,
+            "autoLoan":0.0,
+            "ownerInvestment":15000.0,
+            "netIncrease":0.0
+        }
+    }
+},
+{
+    "name": "Restaurant",
+    "model":"Petshop.scn",
+    "finantials":{
+        "incomeStatement":{
+            "period":"W0",
+            "revenue":1300.00,
+            "costOfSales":400.00,
+            "advertising":150.00,
+            "badDebtExpense":0.00,
+            "bankCharges":0.00,
+            "insurance":80.0,
+            "payrollTaxes":80.00,
+            "rent":100.00,
+            "supplies":0.00,
+            "wages":450.00,
+            "repairRevenue":0.0,
+            "interestExpense":0.0,
+            "incomeTaxes":0.0
+        },
+        "balanceSheet":{
+            "period":"W0",
+            "cash":10000.00,
+            "accountsReceivable":0.00,
+            "inventory":5000.00,
+            "prepaidExpenses":0.0,
+            "ppeValue":1500.0,
+            "accumulatedDepreciation":0.0,
+            "accountsPayable":0.0,
+            "shortTermPayables":0.0,
+            "shortTermDebt":0.0,
+            "longTermDebt":0.0,
+            "capitalStock":0.0,
+            "shares":1000,
+            "retainedEarnings":0.0,
+        },
+        "cashflow":{
+            "period":"W0",
+            "netIncome":0.0,
+            "accountsReceivable":0.0,
+            "inventory":0.0,
+            "prepaidExpenses":0.00,
+            "accountsPayable":0.0,
+            "purchases":0.0,
+            "mortgage":0.0,
+            "autoLoan":0.0,
+            "ownerInvestment":15000.0,
+            "netIncrease":0.0
+        }
+    }
+},
+{
+    "name": "Pet Shop",
+    "model":"Petshop.scn",
+    "finantials":{
+        "incomeStatement":{
+            "period":"W0",
+            "revenue":1300.00,
+            "costOfSales":400.00,
+            "advertising":150.00,
+            "badDebtExpense":0.00,
+            "bankCharges":0.00,
+            "insurance":80.0,
+            "payrollTaxes":80.00,
+            "rent":100.00,
+            "supplies":0.00,
+            "wages":450.00,
+            "repairRevenue":0.0,
+            "interestExpense":0.0,
+            "incomeTaxes":0.0
+        },
+        "balanceSheet":{
+            "period":"W0",
+            "cash":10000.00,
+            "accountsReceivable":0.00,
+            "inventory":5000.00,
+            "prepaidExpenses":0.0,
+            "ppeValue":1500.0,
+            "accumulatedDepreciation":0.0,
+            "accountsPayable":0.0,
+            "shortTermPayables":0.0,
+            "shortTermDebt":0.0,
+            "longTermDebt":0.0,
+            "capitalStock":0.0,
+            "shares":1000,
+            "retainedEarnings":0.0,
+        },
+        "cashflow":{
+            "period":"W0",
+            "netIncome":0.0,
+            "accountsReceivable":0.0,
+            "inventory":0.0,
+            "prepaidExpenses":0.00,
+            "accountsPayable":0.0,
+            "purchases":0.0,
+            "mortgage":0.0,
+            "autoLoan":0.0,
+            "ownerInvestment":15000.0,
+            "netIncrease":0.0
+        }
+    }
+},
+{
+    "name": "SPA Salon",
+    "model":"Petshop.scn",
+    "finantials":{
+        "incomeStatement":{
+            "period":"W0",
+            "revenue":1300.00,
+            "costOfSales":400.00,
+            "advertising":150.00,
+            "badDebtExpense":0.00,
+            "bankCharges":0.00,
+            "insurance":80.0,
+            "payrollTaxes":80.00,
+            "rent":100.00,
+            "supplies":0.00,
+            "wages":450.00,
+            "repairRevenue":0.0,
+            "interestExpense":0.0,
+            "incomeTaxes":0.0
+        },
+        "balanceSheet":{
+            "period":"W0",
+            "cash":10000.00,
+            "accountsReceivable":0.00,
+            "inventory":5000.00,
+            "prepaidExpenses":0.0,
+            "ppeValue":1500.0,
+            "accumulatedDepreciation":0.0,
+            "accountsPayable":0.0,
+            "shortTermPayables":0.0,
+            "shortTermDebt":0.0,
+            "longTermDebt":0.0,
+            "capitalStock":0.0,
+            "shares":1000,
+            "retainedEarnings":0.0,
+        },
+        "cashflow":{
+            "period":"W0",
+            "netIncome":0.0,
+            "accountsReceivable":0.0,
+            "inventory":0.0,
+            "prepaidExpenses":0.00,
+            "accountsPayable":0.0,
+            "purchases":0.0,
+            "mortgage":0.0,
+            "autoLoan":0.0,
+            "ownerInvestment":15000.0,
+            "netIncrease":0.0
+        }
+    }
+},
+{
+    "name": "Home Decor",
     "model":"Petshop.scn",
     "finantials":{
         "incomeStatement":{
