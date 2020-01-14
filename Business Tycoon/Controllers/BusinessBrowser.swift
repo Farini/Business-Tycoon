@@ -16,6 +16,9 @@ class BusinessBrowser: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var lblBizName: UILabel!
+    @IBOutlet weak var lblBizCost: UILabel!
+    
     var ceo:CEO?
     
     var forSale:[Business] = []
@@ -73,7 +76,6 @@ class BusinessBrowser: UIViewController {
         
         print("Showing Biz \(biz.name)")
         
-        
         // Scene
         let scene = BizScene()
         scene.addSceneModel(name: biz.model)
@@ -81,6 +83,11 @@ class BusinessBrowser: UIViewController {
         sceneView.isUserInteractionEnabled = true
         sceneView.allowsCameraControl = true
         
+        // Labels
+        lblBizName.text = biz.name
+        
+        let arbitrary = biz.finantials.incomeStatement.netIncome() * 100
+        lblBizCost.text = "$ \(Int(arbitrary))"
         
         // Table
         self.finantialLines = biz.finantials.balanceSheet.lines()

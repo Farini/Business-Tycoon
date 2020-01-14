@@ -220,7 +220,7 @@
 },
 {
     "name": "SPA Salon",
-    "model":"Petshop.scn",
+    "model":"Spa.scn",
     "finantials":{
         "incomeStatement":{
             "period":"W0",

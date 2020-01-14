@@ -82,25 +82,61 @@ class Business:Codable{
         }else{
             ppeAquired = []
         }
-        
-        
     }
+    
+    func implement(bizActions:BusinessActions) -> IncomeStatement?{
+        
+        // The default (use it to generate next)
+        let defIncome:IncomeStatement = finantials.incomeStatement
+        
+        let comps = Calendar(identifier: .gregorian).dateComponents([.year, .quarter, .month, .weekday, .weekOfYear, .day], from: Finantials.dateNow())
+        
+        let cString = "W \(comps.weekOfYear!) D: \(comps.weekday!)"
+        let period:String = cString
+        
+        // Random
+        let random = Double.random(in: -0.2...0.3)
+        print("Random: \(random)")
+        
+        let advertising = bizActions.advertisement
+        print("Advertisement: \(advertising)")
+        let revenueFromAdvertising = 1.2 * advertising
+        
+        
+        print("Old Revenue: \(defIncome.revenue)")
+        let revenue:Double = defIncome.revenue * random + revenueFromAdvertising
+        print("New Revenue: \(revenue)")
+        let costSales = defIncome.costOfSales * random
+        
+        let badDebtExpense = defIncome.badDebtExpense
+        let bankCharges = defIncome.bankCharges
+        
+        let insurance = defIncome.insurance
+        let payrollTX = defIncome.payrollTaxes
+        let rent = defIncome.rent
+        
+        let supplies = defIncome.supplies
+        let wages = defIncome.wages
+        let repair =  defIncome.repairRevenue
+        let interestExpense = defIncome.interestExpense
+        let incomeTaxes = defIncome.incomeTaxes
+        
+        let new = IncomeStatement(period: period, revenue: revenue, costOfSales: costSales, advertising: advertising, badDebtExpense: badDebtExpense, bankCharges: bankCharges, insurance: insurance, payrollTaxes: payrollTX, rent: rent, supplies: supplies, wages: wages, repairRevenue: repair, interestExpense: interestExpense, incomeTaxes: incomeTaxes)
+        
+        
+        return new
+    }
+    
+    
     
     
     func generateBalanceSheet() -> BalanceSheet?{
         
-        // Getting The time
+        let sheet = finantials.balanceSheet
         
-        let calendar = Calendar(identifier: .gregorian)
-        
-        let comps = calendar.dateComponents([.weekOfYear, .yearForWeekOfYear, .quarter], from: Date())
-        
-        let year = comps.yearForWeekOfYear ?? 0
-        let quarter = comps.quarter ?? 0
-        let week = comps.weekOfYear ?? 0
-        
-        print("Year \(year), Q:\(quarter), W:\(week)")
-        
+        let comps = Calendar(identifier: .gregorian).dateComponents([.year, .quarter, .month, .weekday, .weekOfYear, .day], from: Finantials.dateNow())
+        let cString = "W \(comps.weekOfYear!) D: \(comps.weekday)"
+        let period:String = cString
         
         return nil
     }
@@ -111,7 +147,7 @@ class Business:Codable{
 
 // MARK: - Finantials
 
-struct Finantials:Codable{
+class Finantials:Codable{
     
     // Current
     var incomeStatement:IncomeStatement
@@ -119,24 +155,58 @@ struct Finantials:Codable{
     var cashflow:Cashflow
     
     // History
-    // var histoIncome:[IncomeStatement] = []
-    // var histoBalance:[BalanceSheet] = []
-    // var histoCashflow:[Cashflow] = []
+    var history:[Finantials]
+    var date:Date
     
-//    func searchPeriod(p:AccountingPeriod){
-//
-//    }
+    enum codingKeys:String, CodingKey {
+        case incomeStatement;
+        case balanceSheet;
+        case cashflow;
+        
+        case history;
+        case date;
+    }
     
-//    init?(dictionary:[String:Any]){
-//
-//    }
+    required init(from decoder: Decoder) throws {
+        
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        incomeStatement = try container.decode(IncomeStatement.self, forKey: .incomeStatement)
+        
+        balanceSheet = try container.decode(BalanceSheet.self, forKey: .balanceSheet)
+        cashflow = try container.decode(Cashflow.self, forKey: .cashflow)
+        
+        if let children = try container.decodeIfPresent([Finantials].self, forKey: .history){
+            history = children
+        }else{
+            history = []
+        }
+        
+        if let date = try container.decodeIfPresent(Date.self, forKey: .date){
+            self.date = date
+        }else{
+            self.date = Finantials.dateNow()
+        }
+    }
     
-//    private enum CodingKeys:String, CodingKey{
-//        case incomeStatement
-//        case balanceSheet
-//        case cashflow
-//    }
     
+    static func dateNow() -> Date{
+       
+        var dc = Calendar(identifier: .gregorian).dateComponents([.year, .month, .day], from: Date())
+        dc.timeZone = TimeZone(secondsFromGMT: 0)
+        dc.hour = 0
+        dc.minute = 0
+        dc.second = 0
+        dc.nanosecond = 0
+        
+        let finalDate = dc.date
+        return finalDate!
+            
+    }
+    
+    func generateBalance(sheet:BalanceSheet){
+        
+    }
 }
 
 struct IncomeStatement:Codable{

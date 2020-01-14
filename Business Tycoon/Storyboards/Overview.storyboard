@@ -12,7 +12,7 @@
             <objects>
                 <viewController id="wcZ-XY-uGY" customClass="CEOOverviewController" customModule="Business_Tycoon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R6c-gC-UiC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kSs-zI-hUC">
@@ -109,10 +109,26 @@
                                             <action selector="goToNext:" destination="bU6-Jd-Wuy" eventType="touchUpInside" id="hrJ-ek-jhw"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Biz Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LcZ-Yl-DYH">
+                                        <rect key="frame" x="170.5" y="8" width="73" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcm-Ns-RAR">
+                                        <rect key="frame" x="189" y="33" width="36" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.9346006241" blue="0.66009374840000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="LcZ-Yl-DYH" firstAttribute="top" secondItem="HRp-p4-Lj4" secondAttribute="top" constant="8" id="Bwm-Dq-Ln8"/>
                                     <constraint firstAttribute="height" constant="62" id="GOx-j0-vQF"/>
+                                    <constraint firstItem="jcm-Ns-RAR" firstAttribute="centerX" secondItem="HRp-p4-Lj4" secondAttribute="centerX" id="UYS-WZ-vdP"/>
+                                    <constraint firstItem="jcm-Ns-RAR" firstAttribute="top" secondItem="LcZ-Yl-DYH" secondAttribute="bottom" constant="4" id="WRB-Fm-WAM"/>
+                                    <constraint firstItem="LcZ-Yl-DYH" firstAttribute="centerX" secondItem="HRp-p4-Lj4" secondAttribute="centerX" id="en4-oq-JdJ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -140,6 +156,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Browser" id="Nyl-NU-FQ7"/>
                     <connections>
+                        <outlet property="lblBizCost" destination="jcm-Ns-RAR" id="4Ny-wy-qhP"/>
+                        <outlet property="lblBizName" destination="LcZ-Yl-DYH" id="Sue-9H-SvZ"/>
                         <outlet property="sceneView" destination="unu-M7-qgr" id="pXT-TI-Gil"/>
                         <outlet property="tableView" destination="O0N-wH-zvE" id="TzD-DT-yyB"/>
                         <segue destination="1Af-cb-dqt" kind="show" identifier="buybiz" destinationCreationSelector="addSwiftUIView:" id="HA0-1T-GEz"/>
