@@ -104,7 +104,7 @@ class Business:Codable{
         
         
         print("Old Revenue: \(defIncome.revenue)")
-        let revenue:Double = defIncome.revenue * random + revenueFromAdvertising
+        let revenue:Double = defIncome.revenue + (defIncome.revenue * random) + revenueFromAdvertising
         print("New Revenue: \(revenue)")
         let costSales = defIncome.costOfSales * random
         
@@ -128,18 +128,11 @@ class Business:Codable{
     }
     
     
-    
-    
-    func generateBalanceSheet() -> BalanceSheet?{
-        
-        let sheet = finantials.balanceSheet
-        
-        let comps = Calendar(identifier: .gregorian).dateComponents([.year, .quarter, .month, .weekday, .weekOfYear, .day], from: Finantials.dateNow())
-        let cString = "W \(comps.weekOfYear!) D: \(comps.weekday)"
-        let period:String = cString
-        
-        return nil
+    static var example:Business{
+        let bList = Bundle.main.decode([Business].self, from: "ForSale.json")
+        return bList.first!
     }
+    
     
     // var expansionsOffered:[PPEItem] = []
     // var expansionsUsed:[PPEItem] = []
@@ -193,20 +186,17 @@ class Finantials:Codable{
     static func dateNow() -> Date{
        
         var dc = Calendar(identifier: .gregorian).dateComponents([.year, .month, .day], from: Date())
-        dc.timeZone = TimeZone(secondsFromGMT: 0)
+        // dc.timeZone = TimeZone(secondsFromGMT: 0)
         dc.hour = 0
         dc.minute = 0
         dc.second = 0
         dc.nanosecond = 0
         
         let finalDate = dc.date
-        return finalDate!
+        return finalDate ?? Date()
             
     }
     
-    func generateBalance(sheet:BalanceSheet){
-        
-    }
 }
 
 struct IncomeStatement:Codable{

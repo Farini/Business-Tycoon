@@ -174,7 +174,7 @@ class BusinessBrowser: UIViewController {
     @IBSegueAction func addSwiftUIView(_ coder: NSCoder) -> UIViewController? {
         
         // Swift UI View
-        let ctrlView = BizControl().environmentObject(BusinessActions())
+        let ctrlView = BizControl(business: Business.example).environmentObject(BusinessActions())
         return UIHostingController(coder: coder, rootView: ctrlView)
     }
     

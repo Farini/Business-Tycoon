@@ -15,6 +15,7 @@ class BusinessActions:ObservableObject {
     @Published var reStock:Double = 0.0
     @Published var cleanup:Double = 0.0
     
+    
     init(){
         self.advertisement = 50.0
         self.staff = [StaffMember(named: "Mr. Right"), StaffMember(named: "Ms. Right")]
